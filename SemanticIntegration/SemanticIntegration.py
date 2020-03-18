@@ -21,6 +21,12 @@ from psychopy.hardware import keyboard
 
 import csv
 
+# specify mode here: training or experiment
+mode = 'training'
+
+# specify stimuli list to use (not necessary for training which always uses stimuli_list_training.csv)
+stimuliList = 'stimuli_list1_session1.csv'
+
 class Experiment:
     
     def __init__(self):
@@ -302,21 +308,35 @@ class Experiment:
         self.thisExp.nextEntry()
 
 
-if len(sys.argv) == 1:
-    print('Format: python.exe SemanticIntegration.py <mode> <stimuli list>')
-    print('mode: Either "training" or "experiment".')
-    print('training: use the standard training list (stimuli_list_training.csv) to practice before the actual experiment. If a stimuli list is specified, it will be ignored.')
-    print('experiment: perform the actual experiment. In this case, the stimuli list needs to be specified.')
+# Use this for command line usage
+# if len(sys.argv) == 1:
+#     print('Format: python.exe SemanticIntegration.py <mode> <stimuli list>')
+#     print('mode: Either "training" or "experiment".')
+#     print('training: use the standard training list (stimuli_list_training.csv) to practice before the actual experiment. If a stimuli list is specified, it will be ignored.')
+#     print('experiment: perform the actual experiment. In this case, the stimuli list needs to be specified.')
+# else:
+#     mode = sys.argv[1]
+#     if mode == "training":
+#         print('Training mode')
+#         experiment = Experiment()
+#         experiment.startTraining()
+#     elif mode == "experiment":
+#         print('Experiment mode using ' + sys.argv[2])
+#         experiment = Experiment()
+#         experiment.startExperiment(sys.argv[2])
+#     else:
+#         print('Unknown mode: ' + mode + '. Only "training" or "experiment" are allowed.')
+
+# Comment out this for use from PsychoPy Coder
+# Options are listed at the very top of this file for easier access
+if mode == "training":
+    print('Training mode')
+    experiment = Experiment()
+    experiment.startTraining()
+elif mode == "experiment":
+    print('Experiment mode using ' + stimuliList)
+    experiment = Experiment()
+    experiment.startExperiment(stimuliList)
 else:
-    mode = sys.argv[1]
-    if mode == "training":
-        print('Training mode')
-        experiment = Experiment()
-        experiment.startTraining()
-    elif mode == "experiment":
-        print('Experiment mode using ' + sys.argv[2])
-        experiment = Experiment()
-        experiment.startExperiment(sys.argv[2])
-    else:
-        print('Unknown mode: ' + mode + '. Only "training" or "experiment" are allowed.')
+    print('Unknown mode: ' + mode + '. Only "training" or "experiment" are allowed.')
 
