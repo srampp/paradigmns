@@ -2,7 +2,7 @@ from __future__ import absolute_import, division
 
 from psychopy import locale_setup
 from psychopy import prefs
-from psychopy import gui, visual, core, data, event, logging, clock
+from psychopy import gui, visual, core, data, event, logging, clock, serial
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 
@@ -40,6 +40,7 @@ class Experiment:
         self.defaultKeyboard = keyboard.Keyboard()
         self.frameTolerance = 0.001 
         self.endExpNow = False
+        self.serialPort = 'COM1'
         
     def startExperiment(self, stimuli_list):
         """
@@ -58,6 +59,7 @@ class Experiment:
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
+        self.finish()
 
     def startTraining(self):
         """
@@ -70,6 +72,7 @@ class Experiment:
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
+        self.finish()
 
     def setup(self):
         """
@@ -94,6 +97,8 @@ class Experiment:
         self.logFile = logging.LogFile(filename+'.log', level=logging.EXP)
         logging.console.setLevel(logging.WARNING) 
 
+        self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
+
         # windowed mode for now for easier debugging
         self.win = visual.Window(
             size=(1024, 768), fullscr=False, screen=0, 
@@ -101,6 +106,13 @@ class Experiment:
             monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
             blendMode='avg', useFBO=True, 
             units='height')
+
+    def finish(self):
+        """
+        Clean up the experiment (close serial port, etc.).
+        Output files (data, logs, etc.) are automatically handled by PsychoPy (ExperimentHandler)
+        """
+        self.serial.close()
 
     def readStimulusList(self, filename):
         """
@@ -307,6 +319,27 @@ class Experiment:
         self.thisExp.addData('key_resp.stopped', key_resp.tStopRefresh)
         self.thisExp.nextEntry()
 
+    def waitForSerial(self, numberOfSignals):
+        """
+        Wait for a number of serial port signals (e.g. MRI scanner pulses)
+
+        Parameters
+        ----------
+        numberOfSignals : int
+            number of signals to wait for
+        """
+        continueRoutine = True
+        detected = 0
+        while continueRoutine:
+            value = self.serial.read()
+
+            # Determine here if the values constitue a signal (TODO)
+            if value > 0:
+                detected = detected + 1
+
+            if detected >= numberOfSignals:
+                continueRoutine = False
+        
 
 # Use this for command line usage
 # if len(sys.argv) == 1:
