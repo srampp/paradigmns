@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="1.85.3">
+  <Settings>
+    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="color" updates="None" val="$[-1,-1,-1]" valType="str"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="Experiment info" updates="None" val="{u'session': u'001', u'participant': u''}" valType="code"/>
+    <Param name="JS libs" updates="None" val="packaged" valType="str"/>
+    <Param name="Units" updates="None" val="use prefs" valType="str"/>
+    <Param name="Save excel file" updates="None" val="False" valType="bool"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="Window size (pixels)" updates="None" val="[1680, 1050]" valType="code"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="HTML path" updates="None" val="html" valType="str"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="OSF Project ID" updates="None" val="" valType="str"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="expName" updates="None" val="SC_experiment" valType="str"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+    <Param name="Screen" updates="None" val="1" valType="num"/>
+  </Settings>
+  <Routines>
+    <Routine name="SC_task">
+      <TextComponent name="text_SC_task">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="text_SC_task" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$SC_Stimuli" valType="str"/>
+        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.07" valType="code"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="instruction">
+      <TextComponent name="text_Instruction">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="text_Instruction" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="Satzergänzungsaufgabe:&amp;#10;&amp;#10;Im Folgenden sehen Sie verschiedene Sätze, bei denen jeweils das letzte Wort fehlt. Bitte ergänzen Sie IM STILLEN das fehlende Wort. Denken Sie anschließend über weitere Ergänzungsmöglichkeiten nach, bis der nächste Satz auf dem Bildschirm erscheint.&amp;#10;&amp;#10;Teilweise sehen Sie auch Nonsense-Sätze, die aus bloßen Aneinanderreihungen von Buchstaben bestehen und keinen Sinn ergeben. Hier müssen Sie keine Wörter ergänzen. Warten Sie in diesen Fällen einfach ab, bis der nächste sinnvolle Satz erscheint.&amp;#10;&amp;#10;Drücken Sie eine beliebige Taste, sobald Sie bereit sind, um die Aufgabe zu starten." valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.07" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="key_resp_start">
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp_start" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+    <Routine name="end">
+      <TextComponent name="text_end">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="text_end" valType="code"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="Geschafft!" valType="str"/>
+        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+      </TextComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <Routine name="instruction"/>
+    <LoopInitiator loopType="TrialHandler" name="trials_stimuli">
+      <Param name="conditionsFile" updates="None" val="SC_Stimuli.xlsx" valType="str"/>
+      <Param name="name" updates="None" val="trials_stimuli" valType="code"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="conditions" updates="None" val="[{u'SC_Stimuli': u'Das Gegenteil von drinnen ist _____.'}, {u'SC_Stimuli': u'Wenn die Lichter ausgehen, ist es _____.'}, {u'SC_Stimuli': u'Suppe isst man mit einem _____.'}, {u'SC_Stimuli': u'Ein Dreieck hat drei _____.'}, {u'SC_Stimuli': u'Xbg rhc hgxgr Jknrhc sp _____.'}, {u'SC_Stimuli': u'Xbg rkc vhrmgr mbgn sx mhp _____.'}, {u'SC_Stimuli': u'Bg mrkxg h nkxg kn h nsgzg kg _____.'}, {u'SC_Stimuli': u'Pbg mgnx xk RspngcMkrlr hnr phm Jszmgc _____.'}, {u'SC_Stimuli': u'Wale und Delfine leben im _____.'}, {u'SC_Stimuli': u'Bevor sie zu Bett ging, putzte sie ihre _____.'}, {u'SC_Stimuli': u'Er schrieb die Notiz auf ein St\xfcck _____.'}, {u'SC_Stimuli': u'Am Strand gibt es sehr viel _____.'}, {u'SC_Stimuli': u'Lsknp bhtg tgrc pbhrn _____.'}, {u'SC_Stimuli': u'Bg hxg h nghnqx vqxxgr hnr wgllc _____.'}, {u'SC_Stimuli': u'Mg qpqhllc ghx msxb gkrmp hnr _____.'}, {u'SC_Stimuli': u'Mbgn Sk xbsrpxc S mhnx pkjgxbsnc xk _____.'}, {u'SC_Stimuli': u'Um lila zu erhalten, mischt man rot und _____.'}, {u'SC_Stimuli': u'Der L\xf6we sch\xfcttelt seine pr\xe4chtige _____.'}, {u'SC_Stimuli': u'Nehmen Sie das Baby auf den _____.'}, {u'SC_Stimuli': u'Sie gab ihm einen innigen _____.'}, {u'SC_Stimuli': u'S mggn jc jkngc sn h _____.'}, {u'SC_Stimuli': u'Kn xbg vghzb xbgrg sp h lkx kg _____.'}, {u'SC_Stimuli': u'Zrcsnc vhvsgp jhmg h lkx kg _____.'}, {u'SC_Stimuli': u'Lgjknp hrg pkqr, vqx pqchr sp _____.'}, {u'SC_Stimuli': u'Der Bauer geht zum K\xfchemelken in den _____.'}, {u'SC_Stimuli': u'Zur Entscheidung werfen wir eine _____.'}, {u'SC_Stimuli': u'Die Gefangenen bekamen nur Wasser und _____.'}, {u'SC_Stimuli': u'Er parkte den Wagen am Rand der _____.'}, {u'SC_Stimuli': u'Sg ckq ghx xkk jqzb ckq msll vg _____.'}, {u'SC_Stimuli': u&quot;Mbgn sx'p bkx kqx S lsmg xk ghx _____.&quot;}, {u'SC_Stimuli': u'Jc ghtkrsxg gkkr sp _____.'}, {u'SC_Stimuli': u'Mbgn xbg lscbx xqrnp crggn ckq _____.'}, {u'SC_Stimuli': u'Vor Schreck entfuhr ihr ein gellender _____.'}, {u'SC_Stimuli': u'Unsere Pl\xe4tze sind in der zweiten _____.'}, {u'SC_Stimuli': u'In Karate hat er den schwarzen _____.'}, {u'SC_Stimuli': u'Die Gezeiten sind Ebbe und _____.'}, {u'SC_Stimuli': u'H xrshnclg bhp xbrgg _____.'}, {u'SC_Stimuli': u'Jc ghtkrsxg jktsg sp _____.'}, {u'SC_Stimuli': u'Mbhlgp hnr rklnbsnp lstg sn xbg _____.'}, {u'SC_Stimuli': u'Pbg lsmgp xk ghx zbkzklhxg zbsn _____.'}, {u'SC_Stimuli': u'Briefmarken bekommst du bei der _____.'}, {u'SC_Stimuli': u'Sie kaufte Gem\xfcse und frisches _____.'}, {u'SC_Stimuli': u'Aus dem Haus z\xfcngelten lodernde _____.'}, {u'SC_Stimuli': u'Die Arbeiter rodeten den _____.'}, {u'SC_Stimuli': u'H vhpgvhll chjg bhp nsng _____.'}, {u'SC_Stimuli': u'Xbg knnkpsxg kg snpsrg sp _____.'}, {u'SC_Stimuli': u'Xbgrg sp nk pzbkkl kn Phxqrrhc kr _____.'}, {u'SC_Stimuli': u'Xk jhmg nqrnlg ckq jsd rgr hnr _____.'}]" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+    </LoopInitiator>
+    <Routine name="SC_task"/>
+    <LoopTerminator name="trials_stimuli"/>
+    <Routine name="end"/>
+  </Flow>
+</PsychoPy2experiment>
