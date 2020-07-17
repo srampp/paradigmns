@@ -41,7 +41,7 @@ class Experiment:
         self.defaultKeyboard = keyboard.Keyboard()
         self.frameTolerance = 0.001 
         self.endExpNow = False
-        self.serialPort = 'COM1'
+        #self.serialPort = 'COM1'
         
     def startExperiment(self, stimuli_list):
         """
@@ -54,9 +54,10 @@ class Experiment:
             The respective file should reside in the folder of the python file. Wav-files should be stored in a subfolder "wav" without further subdirectories.
         """
         filenames, responseTimes = self.readStimulusList(stimuli_list)
+        self.waitForButton(-1, ['space'], 'Press space to start')
         self.setup()
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
-        self.waitForButton(3, ['space'])
+        self.waitForButton(-1, ['space'], 'Press space to continue')
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
@@ -68,8 +69,9 @@ class Experiment:
         """
         filenames, responseTimes = self.readStimulusList('stimuli_list_training.csv')
         self.setup()
+        self.waitForButton(-1, ['space'], 'Press space to start')
         self.presentSound('wav' + os.sep +'Instruktionen.wav')
-        self.waitForButton(3, ['space'])
+        self.waitForButton(-1, ['space'], 'Press space to continue')
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
@@ -98,15 +100,23 @@ class Experiment:
         self.logFile = logging.LogFile(filename+'.log', level=logging.EXP)
         logging.console.setLevel(logging.WARNING) 
 
-        self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
+        #self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
 
         # windowed mode for now for easier debugging
         self.win = visual.Window(
-            size=(1024, 768), fullscr=False, screen=0, 
+            size=(1024, 768), fullscr=True, screen=0, 
             winType='pyglet', allowGUI=False, allowStencil=False,
             monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
             blendMode='avg', useFBO=True, 
             units='height')
+        
+        self.message = visual.TextStim(win=self.win, name='message',
+            text='Press key to start',
+            font='Arial',
+            pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+            color='black', colorSpace='rgb', opacity=1, 
+            languageStyle='LTR',
+            depth=0.0)
 
     def finish(self):
         """
@@ -231,11 +241,11 @@ class Experiment:
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
             thisComponent.tStopRefresh = None
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
+            #if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
 
 
-    def waitForButton(self, maxTime, keyList):
+    def waitForButton(self, maxTime, keyList, text):
         """
         Wait for a button press.
         
@@ -243,6 +253,7 @@ class Experiment:
         ----------
         maxTime : double
             maximum time in seconds to wait for a button press.
+            If -1 is specified, the function waits until a button press with no limit
         keyList : list of str
             keys to wait for
         """
@@ -253,6 +264,7 @@ class Experiment:
         continueRoutine = True
         key_resp = keyboard.Keyboard()
         self.resetTrialComponents([key_resp])
+        self.message.text = text
         
         while continueRoutine:
             # get current time
@@ -275,9 +287,10 @@ class Experiment:
                 waitOnFlip = True
                 self.win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
                 self.win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+                self.message.setAutoDraw(True)
             if key_resp.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > key_resp.tStartRefresh + maxTime-self.frameTolerance:
+                if maxTime >= 0 and tThisFlipGlobal >  key_resp.tStartRefresh + maxTime-self.frameTolerance:
                     # keep track of stop time/frame for later
                     key_resp.tStop = t  # not accounting for scr refresh
                     key_resp.frameNStop = frameN  # exact frame index
@@ -295,6 +308,7 @@ class Experiment:
                     key_resp.rt = theseKeys.rt
                     # a response ends the routine
                     continueRoutine = False
+                    key_resp.status = FINISHED
             
             # check for quit (typically the Esc key)
             if self.endExpNow or self.defaultKeyboard.getKeys(keyList=["escape"]):
@@ -310,6 +324,9 @@ class Experiment:
                 self.win.flip()
 
         # -------Ending Routine "pause"-------
+        
+        self.message.setAutoDraw(False)
+        
         # check responses
         if key_resp.keys in ['', [], None]:  # No response was made
             key_resp.keys = None
