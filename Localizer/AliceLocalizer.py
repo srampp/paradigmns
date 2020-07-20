@@ -57,7 +57,7 @@ class AliceLocalizer:
         self.defaultKeyboard = keyboard.Keyboard()
         self.frameTolerance = 0.001 
         self.endExpNow = False
-        self.serialPort = 'COM1'
+        #self.serialPort = 'COM1'
         
     def setup(self):
         """
@@ -84,7 +84,7 @@ class AliceLocalizer:
         self.logFile = logging.LogFile(filename+'.log', level=logging.EXP)
         logging.console.setLevel(logging.WARNING) 
 
-        self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
+        #self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
 
         self.win = visual.Window(
             size=(1024, 768), fullscr=True, screen=0, 
