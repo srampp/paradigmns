@@ -123,7 +123,7 @@ class Experiment:
         Clean up the experiment (close serial port, etc.).
         Output files (data, logs, etc.) are automatically handled by PsychoPy (ExperimentHandler)
         """
-        self.serial.close()
+        #self.serial.close()
 
     def readStimulusList(self, filename):
         """
