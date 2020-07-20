@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<PsychoPy2experiment encoding="utf-8" version="3.2.4">
+<PsychoPy2experiment encoding="utf-8" version="2020.1.3">
   <Settings>
     <Param name="Audio latency priority" updates="None" val="use prefs" valType="str"/>
     <Param name="Audio lib" updates="None" val="use prefs" valType="str"/>
@@ -133,8 +133,8 @@
     <Routine name="instructions"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="[OrderedDict([('letter', 'ծ')]), OrderedDict([('letter', 'ճ')]), OrderedDict([('letter', 'D')]), OrderedDict([('letter', 'A')]), OrderedDict([('letter', '\u1cb0')]), OrderedDict([('letter', '\u1ca4')]), OrderedDict([('letter', 'V')]), OrderedDict([('letter', 'E')]), OrderedDict([('letter', '\u1caa')]), OrderedDict([('letter', 'ᴌ')]), OrderedDict([('letter', 'M')]), OrderedDict([('letter', 'I')]), OrderedDict([('letter', 'ջ')]), OrderedDict([('letter', '֏')]), OrderedDict([('letter', 'K')]), OrderedDict([('letter', 'U')]), OrderedDict([('letter', 'թ')]), OrderedDict([('letter', 'წ')]), OrderedDict([('letter', 'L')]), OrderedDict([('letter', 'S')]), OrderedDict([('letter', 'თ')]), OrderedDict([('letter', 'ჯ')]), OrderedDict([('letter', 'T')]), OrderedDict([('letter', 'P')])]" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="stimuli.xlsx" valType="str"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('letter', 'H')]), OrderedDict([('letter', 'K')]), OrderedDict([('letter', 'ⴉ')]), OrderedDict([('letter', 'ꚏ')]), OrderedDict([('letter', 'G')]), OrderedDict([('letter', 'P')])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="SWG_training1.xlsx" valType="str"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
