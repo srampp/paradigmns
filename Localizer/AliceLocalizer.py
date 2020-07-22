@@ -37,6 +37,9 @@ set = 1
 # Language of the stimuli
 language = 'German'
 
+# run 1 or 2
+run = 1
+
 
 
 class AliceLocalizer:
@@ -117,8 +120,8 @@ class AliceLocalizer:
         # I = intact
         # D = degraded
     
-        self.blocks = ['X', 'I', 'D', 'I', 'D', 'X', 'I', 'D', 'D', 'I', 'X', 'D', 'I', 'D', 'I', 'X',
-            'X', 'D', 'I', 'D', 'I', 'X', 'D', 'I', 'I', 'D', 'X', 'I', 'D', 'I', 'D', 'X']
+        self.blocks = [['X', 'I', 'D', 'I', 'D', 'X', 'I', 'D', 'D', 'I', 'X', 'D', 'I', 'D', 'I', 'X'],
+            ['X', 'D', 'I', 'D', 'I', 'X', 'D', 'I', 'I', 'D', 'X', 'I', 'D', 'I', 'D', 'X']]
 
     def finish(self):
         """
@@ -127,7 +130,7 @@ class AliceLocalizer:
         """
         self.serial.close()
             
-    def startExperiment(self, set = 1, language = 'German'):
+    def startExperiment(self, set = 1, language = 'German', run = 1):
         """
         Start the experiment with the specified parameters.
 
@@ -144,12 +147,12 @@ class AliceLocalizer:
         self.setupStimuli(set, language)
         self.waitForButton('Press space to start.', ['space'])
         self.fixation.autoDraw = True
-        self.processBlocks()
+        self.processBlocks(run)
         self.fixation.autoDraw = False
         self.waitForButton('Finished. Press space to quit.', ['space'])
         self.finish()
 
-    def processBlocks(self):
+    def processBlocks(self, run):
         """
         Process all blocks sequentially according to self.blocks. The duration and timing is either explicitly 
         specified (12 seconds for fixation) or defined by the duration of the specific wav-file. 
@@ -157,7 +160,9 @@ class AliceLocalizer:
         intactIndex = 0
         degradedIndex = 0
         
-        for block in self.blocks:
+        blocks = self.blocks[run]
+        
+        for block in blocks:
             if block == 'X':
                 self.wait(12)
             elif block == 'I':
@@ -185,6 +190,9 @@ class AliceLocalizer:
         start = 1
         if(set == 2):
             start = 13
+            
+        if(run == 2):
+            start = start + 6
 
         self.intact = []
         self.degraded = []
@@ -355,4 +363,4 @@ class AliceLocalizer:
         
         
 alice = AliceLocalizer()
-alice.startExperiment(set, language)
+alice.startExperiment(set, language, run)
