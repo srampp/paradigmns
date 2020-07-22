@@ -31,11 +31,8 @@ import serial
 #   another approach and load all required wav-files into memory during setup. The total amount of required 
 #   memory should not be too bad, as we're looking at ~4.5Mb per intact/degraded pair, so 12*4.5Mb = 540Mb.
 
-# Set of audio files to use: 1 - files 1-12, 2 - files 13-24
-set = 1
-
 # Language of the stimuli
-language = 'German'
+language = 'GermanMono'
 
 # run 1 or 2
 run = 1
@@ -128,9 +125,9 @@ class AliceLocalizer:
         Clean up the experiment (close serial port, etc.).
         Output files (data, logs, etc.) are automatically handled by PsychoPy (ExperimentHandler)
         """
-        self.serial.close()
+        #self.serial.close()
             
-    def startExperiment(self, set = 1, language = 'German', run = 1):
+    def startExperiment(self, language = 'German', run = 1):
         """
         Start the experiment with the specified parameters.
 
@@ -144,7 +141,7 @@ class AliceLocalizer:
             language of the stimuli to use (default: 'German')
         """
         self.setup()
-        self.setupStimuli(set, language)
+        self.setupStimuli(language, run)
         self.waitForButton('Press space to start.', ['space'])
         self.fixation.autoDraw = True
         self.processBlocks(run)
@@ -172,34 +169,108 @@ class AliceLocalizer:
                 self.presentSound(self.degraded[degradedIndex])
                 degradedIndex = degradedIndex + 1
         
-    def setupStimuli(self, set, language):
+    def setupStimuli(self, language, run):
         """
-        Set up the list of wavefiles to use.
+        Set up the list of wavefiles to use. A set of 6 intact and degraded stimuli are randomly selected.
+        The randomization makes sure that subsequent stimuli are not from the same sentence.
         
         Parameters
         ----------
-        set : int
-            set of audio files to use: 1 - files 1-12, 2 - files 13-24
+        language : string
+            language of the stimuli to use.
             The respective files should reside in a folder specified when creating this instance.
             Within this folder, stimuli are organized in subfolders according to the language, e.g. "German"
-        language : string
-            language of the stimuli to use
         """
         
         directory =  os.path.join(self.stimuliDir, language)
-        start = 1
-        if(set == 2):
-            start = 13
-            
-        if(run == 2):
-            start = start + 6
-
+        
         self.intact = []
         self.degraded = []
-        for n in range(start, start+12):
-            self.intact.append(os.path.join(directory, str(n)+'_intact.wav'))
-            self.degraded.append(os.path.join(directory, str(n)+'_degraded.wav'))
+        
+        seq = self.makeSimulusSequence(run)
+        blocks = self.blocks[run]
+        
+        i = 0
+        for b in blocks:
+            if (b == 'I'):
+                self.intact.append(os.path.join(directory, str(seq[i])+'_intact.wav'))
+                i = i + 1
+            elif (b == 'D'):
+                self.degraded.append(os.path.join(directory, str(seq[i])+'_degraded.wav'))
+                i = i + 1
+        
 
+    def makeSimulusSequence(self, run):
+        seq = []
+        isIntacts = []
+        intact = list(range(1, 24))
+        degraded = list(range(1, 24))
+        lastIntact = False
+        
+        blocks = self.blocks[run]
+        for b in blocks:
+            if (b == 'I'):
+                ok = False
+                while not ok:
+                    # draw an intact stimulus
+                    ind = np.random.randint(len(intact))
+                    value = intact[ind]
+                    ok = self.checkValue(seq, value, True, lastIntact)
+                intact.remove(value)
+                seq.append(value)
+                isIntacts.append(True)
+                lastIntact = True
+            elif (b == 'D'):
+                ok = False
+                while not ok:
+                    # draw an intact stimulus
+                    ind = np.random.randint(len(degraded))
+                    value = degraded[ind]
+                    ok = self.checkValue(seq, value, False, lastIntact)
+                degraded.remove(value)
+                seq.append(value)
+                isIntacts.append(False)
+                lastIntact = False
+        
+        return seq
+                
+         
+    def checkValue(self, seq, value, isCurrentIntact, isLastIntact):
+        if len(seq) == 0:
+            return True
+        
+        # Last value should not be identical 
+        last = seq[-1]
+        if value == last:
+            return False
+        
+        # Two consecutive intacts should not be consecutive passages
+        if isCurrentIntact and isLastIntact:
+            if value == last + 1:
+                return False
+        
+        # Passages should not occur twice in the sequence, independen of intact/degraded
+        for s in seq:
+            if s == value:
+                return False
+        
+        return True        
+      
+    def printStimuli(self):
+        blocks = self.blocks[run]
+        i = 0
+        d = 0
+        
+        for b in blocks:
+            if (b == 'I'):
+                print(self.intact[i])
+                i = i + 1
+            elif (b == 'D'):
+                print(self.degraded[d])
+                d = d + 1
+            elif (b == 'X'):
+                print('Fixation')
+    
     def presentSound(self, wavfile):
         """
         Play a sound
@@ -363,4 +434,9 @@ class AliceLocalizer:
         
         
 alice = AliceLocalizer()
-alice.startExperiment(set, language, run)
+alice.startExperiment(language, run)
+
+# Test stimulus setup
+#alice.setup()
+#alice.setupStimuli('German', 1)
+#alice.printStimuli()
