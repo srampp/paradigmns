@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.1.3),
-    on Juli 17, 2020, at 14:25
+    on Juli 22, 2020, at 13:44
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -203,9 +203,9 @@ thisExp.addData('text.stopped', text.tStopRefresh)
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=24, method='sequential', 
+trials = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('stimuli.xlsx'),
+    trialList=data.importConditions('SWG_training1.xlsx'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -292,7 +292,7 @@ for thisTrial in trials:
     trials.addData('text_3.stopped', text_3.tStopRefresh)
     thisExp.nextEntry()
     
-# completed 24 repeats of 'trials'
+# completed 1 repeats of 'trials'
 
 
 # ------Prepare to start Routine "end"-------
