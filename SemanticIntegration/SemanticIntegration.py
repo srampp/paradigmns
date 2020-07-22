@@ -54,8 +54,8 @@ class Experiment:
             The respective file should reside in the folder of the python file. Wav-files should be stored in a subfolder "wav" without further subdirectories.
         """
         filenames, responseTimes = self.readStimulusList(stimuli_list)
-        self.waitForButton(-1, ['space'], 'Press space to start')
         self.setup()
+        self.waitForButton(-1, ['space'], 'Press space to start')  
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
         self.waitForButton(-1, ['space'], 'Press space to continue')
         for n in range(0, len(filenames)):
@@ -174,6 +174,7 @@ class Experiment:
 
         # reset timers
         t = 0
+        startTime = trialClock.getTime()
         _timeToFirstFrame = self.win.getFutureFlipTime(clock="now")
         trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
@@ -219,10 +220,14 @@ class Experiment:
 
         # -------Ending Routine -------
         wav.stop()  # ensure sound has stopped at end of routine
+        endTime = trialClock.getTime()
+        
         self.thisExp.addData('wavfile', wavfile)
         self.thisExp.addData('response', response)
         self.thisExp.addData('rt', rt)
         self.thisExp.addData('wav.started', wav.tStart)
+        self.thisExp.addData('startTime', startTime)
+        self.thisExp.addData('endTime', endTime)
         self.thisExp.nextEntry()
         
         self.routineTimer.reset()
