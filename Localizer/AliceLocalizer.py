@@ -144,7 +144,7 @@ class AliceLocalizer:
         self.setupStimuli(language, run)
         self.waitForButton('Press space to start.', ['space'])
         self.fixation.autoDraw = True
-        self.processBlocks(run)
+        self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False
         self.waitForButton('Finished. Press space to quit.', ['space'])
         self.finish()
