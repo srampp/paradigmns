@@ -23,10 +23,10 @@ import serial
 import csv
 
 # specify mode here: training or experiment
-mode = 'training'
+mode = 'experiment'
 
 # specify stimuli list to use (not necessary for training which always uses stimuli_list_training.csv)
-stimuliList = 'stimuli_list1_session1.csv'
+stimuliList = 'stimuli_list1_session2.csv'
 
 class Experiment:
     
@@ -106,15 +106,25 @@ class Experiment:
         self.win = visual.Window(
             size=(1024, 768), fullscr=True, screen=0, 
             winType='pyglet', allowGUI=False, allowStencil=False,
-            monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+            monitor='testMonitor', color='black', colorSpace='rgb',
             blendMode='avg', useFBO=True, 
             units='height')
-        
+
+        # fixation cross
+        self.fixation = visual.TextStim(win=self.win, name='fixation',
+            text='+',
+            font='Arial',
+            pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+            color='white', colorSpace='rgb', opacity=1, 
+            languageStyle='LTR',
+            depth=0.0)
+        self.fixation.autoDraw = True
+
         self.message = visual.TextStim(win=self.win, name='message',
             text='Press key to start',
             font='Arial',
             pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-            color='black', colorSpace='rgb', opacity=1, 
+            color='white', colorSpace='rgb', opacity=1, 
             languageStyle='LTR',
             depth=0.0)
 
