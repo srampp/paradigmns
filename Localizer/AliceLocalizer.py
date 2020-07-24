@@ -104,9 +104,9 @@ class AliceLocalizer:
         self.fixation.autoDraw = True
 
         self.message = visual.TextStim(win=self.win, name='message',
-            text='Press key to start',
+            text='Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.',
             font='Arial',
-            pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+            pos=(0, 0), height=0.07, wrapWidth=None, ori=0, 
             color='white', colorSpace='rgb', opacity=1, 
             languageStyle='LTR',
             depth=0.0)
@@ -142,11 +142,11 @@ class AliceLocalizer:
         """
         self.setup()
         self.setupStimuli(language, run)
-        self.waitForButton('Press space to start.', ['space'])
+        self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.', ['space'])
         self.fixation.autoDraw = True
         self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False
-        self.waitForButton('Finished. Press space to quit.', ['space'])
+        self.waitForButton('Ende der Aufgabe.', ['space'])
         self.finish()
 
     def processBlocks(self, run):
