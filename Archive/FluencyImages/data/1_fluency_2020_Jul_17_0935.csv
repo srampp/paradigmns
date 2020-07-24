@@ -1,0 +1,4 @@
+﻿stimImage,trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,text.started,text.stopped,image.started,image.stopped,participant,session,date,expName,psychopyVersion,frameRate,
+Folie1.JPG,0,0,0,0,28.856895200000054,None,42.85900159999983,None,1,001,2020_Jul_17_0935,fluency,2020.1.3,59.526041750411586,
+Folie2.JPG,0,1,1,1,,,51.858482900000126,None,1,001,2020_Jul_17_0935,fluency,2020.1.3,59.526041750411586,
+Folie3.JPG,0,2,2,2,,,61.87103059999981,None,1,001,2020_Jul_17_0935,fluency,2020.1.3,59.526041750411586,

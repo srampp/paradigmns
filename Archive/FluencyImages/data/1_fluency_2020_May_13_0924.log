@@ -1,0 +1,55 @@
+1.4979 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+7.9650 	WARNING 	User requested fullscreen with size [2560 1440], but screen is actually [3840, 2160]. Using actual size
+9.6220 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color='black', colorSpace='named', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000011AFF99AC18>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000011AFF779908>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([3840, 2160]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.6221 	EXP 	window1: recordFrameIntervals = False
+9.7877 	EXP 	window1: recordFrameIntervals = True
+9.9714 	EXP 	window1: recordFrameIntervals = False
+10.3140 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Press space key to start', units='height', win=Window(...), wrapWidth=1)
+10.3192 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='image', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.5, 0.5]), texRes=128, units='height', win=Window(...))
+10.3489 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Finished!', units='height', win=Window(...), wrapWidth=1)
+10.3822 	EXP 	text: autoDraw = True
+14.5651 	EXP 	Imported stimuli.xlsx as conditions, 24 conditions, 1 params
+14.5655 	EXP 	Created sequence: sequential, trialTypes=24, nReps=24, seed=None
+14.5659 	EXP 	New trial (rep=0, index=0): OrderedDict([('stimImage', 'Folie1.JPG')])
+14.7918 	DATA 	Keypress: space
+14.8064 	EXP 	text: autoDraw = False
+14.8064 	EXP 	image: image = 'Folie1.JPG'
+14.8064 	EXP 	image: autoDraw = True
+24.5110 	EXP 	New trial (rep=0, index=1): OrderedDict([('stimImage', 'Folie2.JPG')])
+24.7499 	EXP 	image: autoDraw = False
+24.7499 	EXP 	image: image = 'Folie2.JPG'
+24.7499 	EXP 	image: autoDraw = True
+34.5095 	EXP 	New trial (rep=0, index=2): OrderedDict([('stimImage', 'Folie3.JPG')])
+34.7427 	EXP 	image: autoDraw = False
+34.7427 	EXP 	image: image = 'Folie3.JPG'
+34.7427 	EXP 	image: autoDraw = True
+44.5108 	EXP 	New trial (rep=0, index=3): OrderedDict([('stimImage', 'Folie4.JPG')])
+44.7644 	EXP 	image: autoDraw = False
+44.7644 	EXP 	image: image = 'Folie4.JPG'
+44.7644 	EXP 	image: autoDraw = True
+54.5106 	EXP 	New trial (rep=0, index=4): OrderedDict([('stimImage', 'Folie5.JPG')])
+54.7581 	EXP 	image: autoDraw = False
+54.7581 	EXP 	image: image = 'Folie5.JPG'
+54.7581 	EXP 	image: autoDraw = True
+64.5113 	EXP 	New trial (rep=0, index=5): OrderedDict([('stimImage', 'Folie6.JPG')])
+64.7538 	EXP 	image: autoDraw = False
+64.7538 	EXP 	image: image = 'Folie6.JPG'
+64.7538 	EXP 	image: autoDraw = True
+74.5117 	EXP 	New trial (rep=0, index=6): OrderedDict([('stimImage', 'Folie7.JPG')])
+74.7577 	EXP 	image: autoDraw = False
+74.7577 	EXP 	image: image = 'Folie7.JPG'
+74.7577 	EXP 	image: autoDraw = True
+84.4961 	EXP 	New trial (rep=0, index=7): OrderedDict([('stimImage', 'Folie8.JPG')])
+84.7316 	EXP 	image: autoDraw = False
+84.7316 	EXP 	image: image = 'Folie8.JPG'
+84.7316 	EXP 	image: autoDraw = True
+94.4958 	EXP 	New trial (rep=0, index=8): OrderedDict([('stimImage', 'Folie9.JPG')])
+94.7387 	EXP 	image: autoDraw = False
+94.7387 	EXP 	image: image = 'Folie9.JPG'
+94.7387 	EXP 	image: autoDraw = True
+104.4963 	EXP 	New trial (rep=0, index=9): OrderedDict([('stimImage', 'Folie10.JPG')])
+104.7384 	EXP 	image: autoDraw = False
+104.7384 	EXP 	image: image = 'Folie10.JPG'
+104.7384 	EXP 	image: autoDraw = True
+106.9813 	DATA 	Keypress: escape
+107.3853 	EXP 	window1: mouseVisible = True

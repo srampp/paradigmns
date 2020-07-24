@@ -1,0 +1,335 @@
+1.3616 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+7.7939 	WARNING 	User requested fullscreen with size [2560 1440], but screen is actually [3840, 2160]. Using actual size
+9.0357 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color='black', colorSpace='named', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000193C6D22630>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x00000193C7067048>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([3840, 2160]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.0358 	EXP 	window1: recordFrameIntervals = False
+9.2018 	EXP 	window1: recordFrameIntervals = True
+9.3874 	EXP 	window1: recordFrameIntervals = False
+9.6961 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Press space key to start', units='height', win=Window(...), wrapWidth=1)
+9.7200 	EXP 	Created text_3 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_3', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='default text', units='height', win=Window(...), wrapWidth=1)
+9.7417 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_2', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Finished!', units='height', win=Window(...), wrapWidth=1)
+9.8547 	EXP 	text: autoDraw = True
+11.5257 	DATA 	Keypress: space
+11.6899 	EXP 	Imported stimuli.xlsx as conditions, 24 conditions, 1 params
+11.6902 	EXP 	Created sequence: sequential, trialTypes=24, nReps=24, seed=None
+11.6906 	EXP 	New trial (rep=0, index=0): OrderedDict([('letter', 'ծ')])
+11.7145 	EXP 	text: autoDraw = False
+11.7145 	EXP 	text_3: text = 'ծ'
+11.7145 	EXP 	text_3: autoDraw = True
+21.5521 	EXP 	New trial (rep=0, index=1): OrderedDict([('letter', 'ճ')])
+21.5669 	EXP 	text_3: autoDraw = False
+21.5669 	EXP 	text_3: text = 'ճ'
+21.5669 	EXP 	text_3: autoDraw = True
+31.5514 	EXP 	New trial (rep=0, index=2): OrderedDict([('letter', 'D')])
+31.5679 	EXP 	text_3: autoDraw = False
+31.5679 	EXP 	text_3: text = 'D'
+31.5679 	EXP 	text_3: autoDraw = True
+41.5540 	EXP 	New trial (rep=0, index=3): OrderedDict([('letter', 'A')])
+41.5785 	EXP 	text_3: autoDraw = False
+41.5785 	EXP 	text_3: text = 'A'
+41.5785 	EXP 	text_3: autoDraw = True
+51.5546 	EXP 	New trial (rep=0, index=4): OrderedDict([('letter', '\u1cb0')])
+51.6222 	EXP 	text_3: autoDraw = False
+51.6222 	EXP 	text_3: text = '\u1cb0'
+51.6222 	EXP 	text_3: autoDraw = True
+61.5548 	EXP 	New trial (rep=0, index=5): OrderedDict([('letter', '\u1ca4')])
+61.5758 	EXP 	text_3: autoDraw = False
+61.5758 	EXP 	text_3: text = '\u1ca4'
+61.5758 	EXP 	text_3: autoDraw = True
+71.5396 	EXP 	New trial (rep=0, index=6): OrderedDict([('letter', 'V')])
+71.5618 	EXP 	text_3: autoDraw = False
+71.5618 	EXP 	text_3: text = 'V'
+71.5618 	EXP 	text_3: autoDraw = True
+81.5395 	EXP 	New trial (rep=0, index=7): OrderedDict([('letter', 'E')])
+81.5618 	EXP 	text_3: autoDraw = False
+81.5618 	EXP 	text_3: text = 'E'
+81.5618 	EXP 	text_3: autoDraw = True
+91.5397 	EXP 	New trial (rep=0, index=8): OrderedDict([('letter', '\u1caa')])
+91.5622 	EXP 	text_3: autoDraw = False
+91.5622 	EXP 	text_3: text = '\u1caa'
+91.5622 	EXP 	text_3: autoDraw = True
+101.5403 	EXP 	New trial (rep=0, index=9): OrderedDict([('letter', 'ᴌ')])
+101.5615 	EXP 	text_3: autoDraw = False
+101.5615 	EXP 	text_3: text = 'ᴌ'
+101.5615 	EXP 	text_3: autoDraw = True
+111.5406 	EXP 	New trial (rep=0, index=10): OrderedDict([('letter', 'M')])
+111.5629 	EXP 	text_3: autoDraw = False
+111.5629 	EXP 	text_3: text = 'M'
+111.5629 	EXP 	text_3: autoDraw = True
+121.5402 	EXP 	New trial (rep=0, index=11): OrderedDict([('letter', 'I')])
+121.5544 	EXP 	text_3: autoDraw = False
+121.5544 	EXP 	text_3: text = 'I'
+121.5544 	EXP 	text_3: autoDraw = True
+131.5413 	EXP 	New trial (rep=0, index=12): OrderedDict([('letter', 'ջ')])
+131.5608 	EXP 	text_3: autoDraw = False
+131.5608 	EXP 	text_3: text = 'ջ'
+131.5608 	EXP 	text_3: autoDraw = True
+141.5425 	EXP 	New trial (rep=0, index=13): OrderedDict([('letter', '֏')])
+141.5653 	EXP 	text_3: autoDraw = False
+141.5653 	EXP 	text_3: text = '֏'
+141.5653 	EXP 	text_3: autoDraw = True
+151.5422 	EXP 	New trial (rep=0, index=14): OrderedDict([('letter', 'K')])
+151.5613 	EXP 	text_3: autoDraw = False
+151.5613 	EXP 	text_3: text = 'K'
+151.5613 	EXP 	text_3: autoDraw = True
+161.5412 	EXP 	New trial (rep=0, index=15): OrderedDict([('letter', 'U')])
+161.5556 	EXP 	text_3: autoDraw = False
+161.5556 	EXP 	text_3: text = 'U'
+161.5556 	EXP 	text_3: autoDraw = True
+171.5422 	EXP 	New trial (rep=0, index=16): OrderedDict([('letter', 'թ')])
+171.5590 	EXP 	text_3: autoDraw = False
+171.5590 	EXP 	text_3: text = 'թ'
+171.5590 	EXP 	text_3: autoDraw = True
+181.5442 	EXP 	New trial (rep=0, index=17): OrderedDict([('letter', 'წ')])
+181.5710 	EXP 	text_3: autoDraw = False
+181.5710 	EXP 	text_3: text = 'წ'
+181.5710 	EXP 	text_3: autoDraw = True
+191.5423 	EXP 	New trial (rep=0, index=18): OrderedDict([('letter', 'L')])
+191.5576 	EXP 	text_3: autoDraw = False
+191.5576 	EXP 	text_3: text = 'L'
+191.5576 	EXP 	text_3: autoDraw = True
+201.5455 	EXP 	New trial (rep=0, index=19): OrderedDict([('letter', 'S')])
+201.5694 	EXP 	text_3: autoDraw = False
+201.5694 	EXP 	text_3: text = 'S'
+201.5694 	EXP 	text_3: autoDraw = True
+211.5452 	EXP 	New trial (rep=0, index=20): OrderedDict([('letter', 'თ')])
+211.5619 	EXP 	text_3: autoDraw = False
+211.5619 	EXP 	text_3: text = 'თ'
+211.5619 	EXP 	text_3: autoDraw = True
+221.5449 	EXP 	New trial (rep=0, index=21): OrderedDict([('letter', 'ჯ')])
+221.5609 	EXP 	text_3: autoDraw = False
+221.5609 	EXP 	text_3: text = 'ჯ'
+221.5609 	EXP 	text_3: autoDraw = True
+231.5442 	EXP 	New trial (rep=0, index=22): OrderedDict([('letter', 'T')])
+231.5594 	EXP 	text_3: autoDraw = False
+231.5594 	EXP 	text_3: text = 'T'
+231.5594 	EXP 	text_3: autoDraw = True
+241.5456 	EXP 	New trial (rep=0, index=23): OrderedDict([('letter', 'P')])
+241.5602 	EXP 	text_3: autoDraw = False
+241.5602 	EXP 	text_3: text = 'P'
+241.5602 	EXP 	text_3: autoDraw = True
+251.5458 	EXP 	New trial (rep=1, index=0): OrderedDict([('letter', 'ծ')])
+251.5608 	EXP 	text_3: autoDraw = False
+251.5608 	EXP 	text_3: text = 'ծ'
+251.5608 	EXP 	text_3: autoDraw = True
+261.5484 	EXP 	New trial (rep=1, index=1): OrderedDict([('letter', 'ճ')])
+261.5631 	EXP 	text_3: autoDraw = False
+261.5631 	EXP 	text_3: text = 'ճ'
+261.5631 	EXP 	text_3: autoDraw = True
+271.5485 	EXP 	New trial (rep=1, index=2): OrderedDict([('letter', 'D')])
+271.5627 	EXP 	text_3: autoDraw = False
+271.5627 	EXP 	text_3: text = 'D'
+271.5627 	EXP 	text_3: autoDraw = True
+281.5511 	EXP 	New trial (rep=1, index=3): OrderedDict([('letter', 'A')])
+281.5653 	EXP 	text_3: autoDraw = False
+281.5653 	EXP 	text_3: text = 'A'
+281.5653 	EXP 	text_3: autoDraw = True
+291.5483 	EXP 	New trial (rep=1, index=4): OrderedDict([('letter', '\u1cb0')])
+291.5632 	EXP 	text_3: autoDraw = False
+291.5632 	EXP 	text_3: text = '\u1cb0'
+291.5632 	EXP 	text_3: autoDraw = True
+301.5493 	EXP 	New trial (rep=1, index=5): OrderedDict([('letter', '\u1ca4')])
+301.5638 	EXP 	text_3: autoDraw = False
+301.5638 	EXP 	text_3: text = '\u1ca4'
+301.5638 	EXP 	text_3: autoDraw = True
+311.5485 	EXP 	New trial (rep=1, index=6): OrderedDict([('letter', 'V')])
+311.5636 	EXP 	text_3: autoDraw = False
+311.5636 	EXP 	text_3: text = 'V'
+311.5636 	EXP 	text_3: autoDraw = True
+321.5489 	EXP 	New trial (rep=1, index=7): OrderedDict([('letter', 'E')])
+321.5641 	EXP 	text_3: autoDraw = False
+321.5641 	EXP 	text_3: text = 'E'
+321.5641 	EXP 	text_3: autoDraw = True
+331.5498 	EXP 	New trial (rep=1, index=8): OrderedDict([('letter', '\u1caa')])
+331.5645 	EXP 	text_3: autoDraw = False
+331.5645 	EXP 	text_3: text = '\u1caa'
+331.5645 	EXP 	text_3: autoDraw = True
+341.5512 	EXP 	New trial (rep=1, index=9): OrderedDict([('letter', 'ᴌ')])
+341.5658 	EXP 	text_3: autoDraw = False
+341.5658 	EXP 	text_3: text = 'ᴌ'
+341.5658 	EXP 	text_3: autoDraw = True
+351.5540 	EXP 	New trial (rep=1, index=10): OrderedDict([('letter', 'M')])
+351.5660 	EXP 	text_3: autoDraw = False
+351.5660 	EXP 	text_3: text = 'M'
+351.5660 	EXP 	text_3: autoDraw = True
+361.5548 	EXP 	New trial (rep=1, index=11): OrderedDict([('letter', 'I')])
+361.5671 	EXP 	text_3: autoDraw = False
+361.5671 	EXP 	text_3: text = 'I'
+361.5671 	EXP 	text_3: autoDraw = True
+371.5532 	EXP 	New trial (rep=1, index=12): OrderedDict([('letter', 'ջ')])
+371.5676 	EXP 	text_3: autoDraw = False
+371.5676 	EXP 	text_3: text = 'ջ'
+371.5676 	EXP 	text_3: autoDraw = True
+381.5552 	EXP 	New trial (rep=1, index=13): OrderedDict([('letter', '֏')])
+381.5705 	EXP 	text_3: autoDraw = False
+381.5705 	EXP 	text_3: text = '֏'
+381.5705 	EXP 	text_3: autoDraw = True
+391.5528 	EXP 	New trial (rep=1, index=14): OrderedDict([('letter', 'K')])
+391.5676 	EXP 	text_3: autoDraw = False
+391.5676 	EXP 	text_3: text = 'K'
+391.5676 	EXP 	text_3: autoDraw = True
+401.5526 	EXP 	New trial (rep=1, index=15): OrderedDict([('letter', 'U')])
+401.5685 	EXP 	text_3: autoDraw = False
+401.5685 	EXP 	text_3: text = 'U'
+401.5685 	EXP 	text_3: autoDraw = True
+411.5534 	EXP 	New trial (rep=1, index=16): OrderedDict([('letter', 'թ')])
+411.5690 	EXP 	text_3: autoDraw = False
+411.5690 	EXP 	text_3: text = 'թ'
+411.5690 	EXP 	text_3: autoDraw = True
+421.5555 	EXP 	New trial (rep=1, index=17): OrderedDict([('letter', 'წ')])
+421.5696 	EXP 	text_3: autoDraw = False
+421.5696 	EXP 	text_3: text = 'წ'
+421.5696 	EXP 	text_3: autoDraw = True
+431.5549 	EXP 	New trial (rep=1, index=18): OrderedDict([('letter', 'L')])
+431.5693 	EXP 	text_3: autoDraw = False
+431.5693 	EXP 	text_3: text = 'L'
+431.5693 	EXP 	text_3: autoDraw = True
+441.5413 	EXP 	New trial (rep=1, index=19): OrderedDict([('letter', 'S')])
+441.5548 	EXP 	text_3: autoDraw = False
+441.5548 	EXP 	text_3: text = 'S'
+441.5548 	EXP 	text_3: autoDraw = True
+451.5411 	EXP 	New trial (rep=1, index=20): OrderedDict([('letter', 'თ')])
+451.5589 	EXP 	text_3: autoDraw = False
+451.5589 	EXP 	text_3: text = 'თ'
+451.5589 	EXP 	text_3: autoDraw = True
+461.5395 	EXP 	New trial (rep=1, index=21): OrderedDict([('letter', 'ჯ')])
+461.5546 	EXP 	text_3: autoDraw = False
+461.5546 	EXP 	text_3: text = 'ჯ'
+461.5546 	EXP 	text_3: autoDraw = True
+471.5395 	EXP 	New trial (rep=1, index=22): OrderedDict([('letter', 'T')])
+471.5547 	EXP 	text_3: autoDraw = False
+471.5547 	EXP 	text_3: text = 'T'
+471.5547 	EXP 	text_3: autoDraw = True
+481.5434 	EXP 	New trial (rep=1, index=23): OrderedDict([('letter', 'P')])
+481.5567 	EXP 	text_3: autoDraw = False
+481.5567 	EXP 	text_3: text = 'P'
+481.5567 	EXP 	text_3: autoDraw = True
+491.5404 	EXP 	New trial (rep=2, index=0): OrderedDict([('letter', 'ծ')])
+491.5556 	EXP 	text_3: autoDraw = False
+491.5556 	EXP 	text_3: text = 'ծ'
+491.5556 	EXP 	text_3: autoDraw = True
+501.5426 	EXP 	New trial (rep=2, index=1): OrderedDict([('letter', 'ճ')])
+501.5571 	EXP 	text_3: autoDraw = False
+501.5571 	EXP 	text_3: text = 'ճ'
+501.5571 	EXP 	text_3: autoDraw = True
+511.5423 	EXP 	New trial (rep=2, index=2): OrderedDict([('letter', 'D')])
+511.5570 	EXP 	text_3: autoDraw = False
+511.5570 	EXP 	text_3: text = 'D'
+511.5570 	EXP 	text_3: autoDraw = True
+521.5442 	EXP 	New trial (rep=2, index=3): OrderedDict([('letter', 'A')])
+521.5580 	EXP 	text_3: autoDraw = False
+521.5580 	EXP 	text_3: text = 'A'
+521.5580 	EXP 	text_3: autoDraw = True
+531.5447 	EXP 	New trial (rep=2, index=4): OrderedDict([('letter', '\u1cb0')])
+531.5591 	EXP 	text_3: autoDraw = False
+531.5591 	EXP 	text_3: text = '\u1cb0'
+531.5591 	EXP 	text_3: autoDraw = True
+541.5476 	EXP 	New trial (rep=2, index=5): OrderedDict([('letter', '\u1ca4')])
+541.5588 	EXP 	text_3: autoDraw = False
+541.5588 	EXP 	text_3: text = '\u1ca4'
+541.5588 	EXP 	text_3: autoDraw = True
+551.5454 	EXP 	New trial (rep=2, index=6): OrderedDict([('letter', 'V')])
+551.5597 	EXP 	text_3: autoDraw = False
+551.5597 	EXP 	text_3: text = 'V'
+551.5597 	EXP 	text_3: autoDraw = True
+561.5450 	EXP 	New trial (rep=2, index=7): OrderedDict([('letter', 'E')])
+561.5598 	EXP 	text_3: autoDraw = False
+561.5598 	EXP 	text_3: text = 'E'
+561.5598 	EXP 	text_3: autoDraw = True
+571.5463 	EXP 	New trial (rep=2, index=8): OrderedDict([('letter', '\u1caa')])
+571.5604 	EXP 	text_3: autoDraw = False
+571.5604 	EXP 	text_3: text = '\u1caa'
+571.5604 	EXP 	text_3: autoDraw = True
+581.5460 	EXP 	New trial (rep=2, index=9): OrderedDict([('letter', 'ᴌ')])
+581.5604 	EXP 	text_3: autoDraw = False
+581.5604 	EXP 	text_3: text = 'ᴌ'
+581.5604 	EXP 	text_3: autoDraw = True
+591.5499 	EXP 	New trial (rep=2, index=10): OrderedDict([('letter', 'M')])
+591.5626 	EXP 	text_3: autoDraw = False
+591.5626 	EXP 	text_3: text = 'M'
+591.5626 	EXP 	text_3: autoDraw = True
+601.5468 	EXP 	New trial (rep=2, index=11): OrderedDict([('letter', 'I')])
+601.5616 	EXP 	text_3: autoDraw = False
+601.5616 	EXP 	text_3: text = 'I'
+601.5616 	EXP 	text_3: autoDraw = True
+611.5475 	EXP 	New trial (rep=2, index=12): OrderedDict([('letter', 'ջ')])
+611.5620 	EXP 	text_3: autoDraw = False
+611.5620 	EXP 	text_3: text = 'ջ'
+611.5620 	EXP 	text_3: autoDraw = True
+621.5490 	EXP 	New trial (rep=2, index=13): OrderedDict([('letter', '֏')])
+621.5642 	EXP 	text_3: autoDraw = False
+621.5642 	EXP 	text_3: text = '֏'
+621.5642 	EXP 	text_3: autoDraw = True
+631.5478 	EXP 	New trial (rep=2, index=14): OrderedDict([('letter', 'K')])
+631.5630 	EXP 	text_3: autoDraw = False
+631.5630 	EXP 	text_3: text = 'K'
+631.5630 	EXP 	text_3: autoDraw = True
+641.5483 	EXP 	New trial (rep=2, index=15): OrderedDict([('letter', 'U')])
+641.5634 	EXP 	text_3: autoDraw = False
+641.5634 	EXP 	text_3: text = 'U'
+641.5634 	EXP 	text_3: autoDraw = True
+651.5486 	EXP 	New trial (rep=2, index=16): OrderedDict([('letter', 'թ')])
+651.5635 	EXP 	text_3: autoDraw = False
+651.5635 	EXP 	text_3: text = 'թ'
+651.5635 	EXP 	text_3: autoDraw = True
+661.5495 	EXP 	New trial (rep=2, index=17): OrderedDict([('letter', 'წ')])
+661.5640 	EXP 	text_3: autoDraw = False
+661.5640 	EXP 	text_3: text = 'წ'
+661.5640 	EXP 	text_3: autoDraw = True
+671.5495 	EXP 	New trial (rep=2, index=18): OrderedDict([('letter', 'L')])
+671.5648 	EXP 	text_3: autoDraw = False
+671.5648 	EXP 	text_3: text = 'L'
+671.5648 	EXP 	text_3: autoDraw = True
+681.5503 	EXP 	New trial (rep=2, index=19): OrderedDict([('letter', 'S')])
+681.5655 	EXP 	text_3: autoDraw = False
+681.5655 	EXP 	text_3: text = 'S'
+681.5655 	EXP 	text_3: autoDraw = True
+691.5513 	EXP 	New trial (rep=2, index=20): OrderedDict([('letter', 'თ')])
+691.5663 	EXP 	text_3: autoDraw = False
+691.5663 	EXP 	text_3: text = 'თ'
+691.5663 	EXP 	text_3: autoDraw = True
+701.5515 	EXP 	New trial (rep=2, index=21): OrderedDict([('letter', 'ჯ')])
+701.5663 	EXP 	text_3: autoDraw = False
+701.5663 	EXP 	text_3: text = 'ჯ'
+701.5663 	EXP 	text_3: autoDraw = True
+711.5511 	EXP 	New trial (rep=2, index=22): OrderedDict([('letter', 'T')])
+711.5676 	EXP 	text_3: autoDraw = False
+711.5676 	EXP 	text_3: text = 'T'
+711.5676 	EXP 	text_3: autoDraw = True
+721.5540 	EXP 	New trial (rep=2, index=23): OrderedDict([('letter', 'P')])
+721.5681 	EXP 	text_3: autoDraw = False
+721.5681 	EXP 	text_3: text = 'P'
+721.5681 	EXP 	text_3: autoDraw = True
+731.5526 	EXP 	New trial (rep=3, index=0): OrderedDict([('letter', 'ծ')])
+731.5680 	EXP 	text_3: autoDraw = False
+731.5680 	EXP 	text_3: text = 'ծ'
+731.5680 	EXP 	text_3: autoDraw = True
+741.5404 	EXP 	New trial (rep=3, index=1): OrderedDict([('letter', 'ճ')])
+741.5544 	EXP 	text_3: autoDraw = False
+741.5544 	EXP 	text_3: text = 'ճ'
+741.5544 	EXP 	text_3: autoDraw = True
+751.5544 	EXP 	New trial (rep=3, index=2): OrderedDict([('letter', 'D')])
+751.5692 	EXP 	text_3: autoDraw = False
+751.5692 	EXP 	text_3: text = 'D'
+751.5692 	EXP 	text_3: autoDraw = True
+761.5543 	EXP 	New trial (rep=3, index=3): OrderedDict([('letter', 'A')])
+761.5690 	EXP 	text_3: autoDraw = False
+761.5690 	EXP 	text_3: text = 'A'
+761.5690 	EXP 	text_3: autoDraw = True
+771.5546 	EXP 	New trial (rep=3, index=4): OrderedDict([('letter', '\u1cb0')])
+771.5700 	EXP 	text_3: autoDraw = False
+771.5700 	EXP 	text_3: text = '\u1cb0'
+771.5700 	EXP 	text_3: autoDraw = True
+781.5557 	EXP 	New trial (rep=3, index=5): OrderedDict([('letter', '\u1ca4')])
+781.5705 	EXP 	text_3: autoDraw = False
+781.5705 	EXP 	text_3: text = '\u1ca4'
+781.5705 	EXP 	text_3: autoDraw = True
+791.5411 	EXP 	New trial (rep=3, index=6): OrderedDict([('letter', 'V')])
+791.5564 	EXP 	text_3: autoDraw = False
+791.5564 	EXP 	text_3: text = 'V'
+791.5564 	EXP 	text_3: autoDraw = True
+801.5421 	EXP 	New trial (rep=3, index=7): OrderedDict([('letter', 'E')])
+801.5494 	DATA 	Keypress: escape
+801.5573 	EXP 	text_3: autoDraw = False
+801.5573 	EXP 	text_3: text = 'E'
+801.5573 	EXP 	text_3: autoDraw = True
+801.7491 	EXP 	window1: mouseVisible = True
