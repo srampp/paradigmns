@@ -1,0 +1,4 @@
+﻿SC_Stimuli,trials_stimuli.thisRepN,trials_stimuli.thisTrialN,trials_stimuli.thisN,trials_stimuli.thisIndex,text_Instruction.started,text_Instruction.stopped,key_resp_start.keys,key_resp_start.rt,key_resp_start.started,key_resp_start.stopped,text_SC_task.started,text_SC_task.stopped,session,participant,date,expName,psychopyVersion,frameRate,
+,,,,,5.2483177001122385,None,space,1.1070042999926955,5.2483177001122385,None,,,001,,2020_Jul_24_1007,SC_experiment,3.2.4,60.00049199381076,
+Nach dem Theaterstück ernteten sie viel _____.,0,0,0,0,,,,,,,6.456602800055407,None,001,,2020_Jul_24_1007,SC_experiment,3.2.4,60.00049199381076,
+Das einsame Küken sucht seine _____.,0,1,1,1,,,,,,,12.415752800065093,None,001,,2020_Jul_24_1007,SC_experiment,3.2.4,60.00049199381076,
