@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on März 23, 2020, at 14:26
+    on Juli 24, 2020, at 10:16
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -49,7 +49,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\niela\\Desktop\\PhD Project\\SentenceCompletion\\SC_lastrun.py',
+    originPath='C:\\Users\\niela\\Desktop\\PhD Project\\paradigms240720\\SentenceCompletion\\SC_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -80,9 +80,9 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "instruction"
 instructionClock = core.Clock()
 text_Instruction = visual.TextStim(win=win, name='text_Instruction',
-    text='Satzergänzungsaufgabe:\n\nIm Folgenden sehen Sie verschiedene Sätze, bei denen jeweils das letzte Wort fehlt. Bitte ergänzen Sie IM STILLEN das fehlende Wort. Denken Sie anschließend über weitere Ergänzungsmöglichkeiten nach, bis der nächste Satz auf dem Bildschirm erscheint.\n\nTeilweise sehen Sie auch Nonsense-Sätze, die aus bloßen Aneinanderreihungen von Buchstaben bestehen und keinen Sinn ergeben. Hier müssen Sie keine Wörter ergänzen. Warten Sie in diesen Fällen einfach ab, bis der nächste sinnvolle Satz erscheint.\n\nDrücken Sie eine beliebige Taste, sobald Sie bereit sind, um die Aufgabe zu starten.',
+    text='Im Folgenden sehen Sie verschiedene Sätze, bei denen jeweils das letzte Wort fehlt. Bitte ergänzen Sie still das fehlende Wort. Teilweise sehen Sie auch Sätze, die keinen Sinn ergeben. Hier müssen Sie keine Wörter ergänzen. Warten Sie in diesen Fällen einfach ab, bis der nächste sinnvolle Satz erscheint.',
     font='Arial',
-    pos=(0, 0), height=0.07, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
@@ -93,7 +93,7 @@ SC_taskClock = core.Clock()
 text_SC_task = visual.TextStim(win=win, name='text_SC_task',
     text='default text',
     font='Arial',
-    pos=(0, 0), height=0.07, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.16, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
@@ -101,7 +101,7 @@ text_SC_task = visual.TextStim(win=win, name='text_SC_task',
 # Initialize components for Routine "end"
 endClock = core.Clock()
 text_end = visual.TextStim(win=win, name='text_end',
-    text='Geschafft!',
+    text='Ende der Aufgabe',
     font='Arial',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -214,7 +214,7 @@ routineTimer.reset()
 # set up handler to look after randomisation of conditions etc
 trials_stimuli = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions('SC_Stimuli.xlsx'),
+    trialList=data.importConditions('SC_list1.xlsx'),
     seed=None, name='trials_stimuli')
 thisExp.addLoop(trials_stimuli)  # add the loop to the experiment
 thisTrials_stimulu = trials_stimuli.trialList[0]  # so we can initialise stimuli with some values
@@ -231,7 +231,7 @@ for thisTrials_stimulu in trials_stimuli:
             exec('{} = thisTrials_stimulu[paramName]'.format(paramName))
     
     # ------Prepare to start Routine "SC_task"-------
-    routineTimer.add(5.000000)
+    routineTimer.add(6.000000)
     # update component parameters for each repeat
     text_SC_task.setText(SC_Stimuli)
     # keep track of which components have finished
@@ -269,7 +269,7 @@ for thisTrials_stimulu in trials_stimuli:
             text_SC_task.setAutoDraw(True)
         if text_SC_task.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_SC_task.tStartRefresh + 5-frameTolerance:
+            if tThisFlipGlobal > text_SC_task.tStartRefresh + 6-frameTolerance:
                 # keep track of stop time/frame for later
                 text_SC_task.tStop = t  # not accounting for scr refresh
                 text_SC_task.frameNStop = frameN  # exact frame index

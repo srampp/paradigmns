@@ -1,0 +1,37 @@
+4.8454 	WARNING 	User requested fullscreen with size [1680 1050], but screen is actually [1920, 1080]. Using actual size
+5.7627 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([-1., -1., -1.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000014404BCCA90>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000014404A99518>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+5.7628 	EXP 	window1: recordFrameIntervals = False
+5.9252 	EXP 	window1: recordFrameIntervals = True
+6.1091 	EXP 	window1: recordFrameIntervals = False
+6.4622 	EXP 	Created text_Instruction = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.2, italic=False, languageStyle='LTR', name='text_Instruction', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='norm', win=Window(...), wrapWidth=1)
+6.4755 	EXP 	Created text_SC_task = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_SC_task', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='default text', units='norm', win=Window(...), wrapWidth=1)
+6.4841 	EXP 	Created text_end = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_end', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Ende der Aufgabe', units='norm', win=Window(...), wrapWidth=1)
+6.5171 	EXP 	text_Instruction: autoDraw = True
+7.9658 	DATA 	Keypress: escape
+8.1358 	EXP 	window1: mouseVisible = True
+3.7339 	WARNING 	User requested fullscreen with size [1680 1050], but screen is actually [1920, 1080]. Using actual size
+4.6418 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([-1., -1., -1.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000028C72FDAA90>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000028C72EAB518>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+4.6418 	EXP 	window1: recordFrameIntervals = False
+4.8074 	EXP 	window1: recordFrameIntervals = True
+4.9911 	EXP 	window1: recordFrameIntervals = False
+5.2010 	EXP 	Created text_Instruction = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_Instruction', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='norm', win=Window(...), wrapWidth=1)
+5.2084 	EXP 	Created text_SC_task = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_SC_task', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='default text', units='norm', win=Window(...), wrapWidth=1)
+5.2176 	EXP 	Created text_end = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_end', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Ende der Aufgabe', units='norm', win=Window(...), wrapWidth=1)
+5.2483 	EXP 	text_Instruction: autoDraw = True
+6.4357 	EXP 	Imported SC_training1.xlsx as conditions, 12 conditions, 1 params
+6.4359 	EXP 	Created sequence: sequential, trialTypes=12, nReps=1, seed=None
+6.4362 	EXP 	New trial (rep=0, index=0): OrderedDict([('SC_Stimuli', 'Nach dem Theaterstück ernteten sie viel _____.')])
+6.4514 	DATA 	Keypress: space
+6.4566 	EXP 	text_Instruction: autoDraw = False
+6.4566 	EXP 	text_SC_task: text = 'Nach dem Theaterstück ernteten sie viel _____.'
+6.4566 	EXP 	text_SC_task: autoDraw = True
+12.3761 	EXP 	New trial (rep=0, index=1): OrderedDict([('SC_Stimuli', 'Das einsame Küken sucht seine _____.')])
+12.4158 	EXP 	text_SC_task: autoDraw = False
+12.4158 	EXP 	text_SC_task: text = 'Das einsame Küken sucht seine _____.'
+12.4158 	EXP 	text_SC_task: autoDraw = True
+18.3742 	EXP 	New trial (rep=0, index=2): OrderedDict([('SC_Stimuli', 'Schimpansen sind eine Gattung von _____.')])
+18.4120 	EXP 	text_SC_task: autoDraw = False
+18.4120 	EXP 	text_SC_task: text = 'Schimpansen sind eine Gattung von _____.'
+18.4120 	EXP 	text_SC_task: autoDraw = True
+23.7746 	DATA 	Keypress: escape
+23.9781 	EXP 	window1: mouseVisible = True
