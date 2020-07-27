@@ -1,0 +1,18 @@
+7.0463 	WARNING 	User requested fullscreen with size [1680 1050], but screen is actually [1920, 1080]. Using actual size
+8.3624 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([-1., -1., -1.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001B35B413A58>, gamma=None, gammaErrorPolicy='raise', kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001B35B39B4E0>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+8.3626 	EXP 	window1: recordFrameIntervals = False
+8.5237 	EXP 	window1: recordFrameIntervals = True
+8.7065 	EXP 	window1: recordFrameIntervals = False
+9.1056 	EXP 	Created text_Instruction = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_Instruction', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='norm', win=Window(...), wrapWidth=1)
+9.1335 	EXP 	Created text_SC_task = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.16, italic=False, languageStyle='LTR', name='text_SC_task', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='default text', units='norm', win=Window(...), wrapWidth=1)
+9.1419 	EXP 	Created text_end = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_end', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='Ende der Aufgabe', units='norm', win=Window(...), wrapWidth=1)
+9.1768 	EXP 	text_Instruction: autoDraw = True
+10.0153 	EXP 	Imported SC_list1.xlsx as conditions, 48 conditions, 1 params
+10.0180 	EXP 	Created sequence: sequential, trialTypes=48, nReps=1, seed=None
+10.0185 	EXP 	New trial (rep=0, index=0): OrderedDict([('SC_Stimuli', 'Astronauten fliegen mit Raketen ins _____.')])
+10.0516 	DATA 	Keypress: space
+10.0572 	EXP 	text_Instruction: autoDraw = False
+10.0572 	EXP 	text_SC_task: text = 'Astronauten fliegen mit Raketen ins _____.'
+10.0572 	EXP 	text_SC_task: autoDraw = True
+11.6604 	DATA 	Keypress: escape
+12.0164 	EXP 	window1: mouseVisible = True
