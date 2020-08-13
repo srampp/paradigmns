@@ -5,6 +5,8 @@ FluencyImages/data/
 Sentence Completion deutsche Stimuli/data/
 SerialTest/data/
 Sentence Completion deutsche Stimuli/SC_lastrun.py
+SentenceCompletion/data/
+SentenceCompletion/SC_lastrun.py
 RestingState/data/
 RestingState/RestingState_lastrun.py
 Archive/SentenceCompletion/data/
