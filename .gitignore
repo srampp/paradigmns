@@ -11,3 +11,4 @@ Archive/SentenceCompletion/data/
 *.pyc
 .vscode
 BreathHold/BreathHold_lastrun.py
+BreathHold/data/
