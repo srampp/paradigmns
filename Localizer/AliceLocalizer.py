@@ -13,12 +13,19 @@ from numpy.random import random, randint, normal, shuffle
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
+sys.path.append("../Utils/")
+from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, 
+                        checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)
+
 from psychopy import prefs
 prefs.hardware['audioLib'] = ['PTB']
 from psychopy import sound
 
 from psychopy.hardware import keyboard
 import serial
+
+from PyDAQmx import *
+from ctypes import *
 
 # Alice in Wonderland localizer according to Fedorenko et al.
 # Issues to add/decide:
@@ -37,7 +44,8 @@ language = 'GermanMono'
 # run 1 or 2
 run = 1
 
-
+# Experiment (MODE_EXP) or development mode (MODE_DEV) for using triggers
+mode = MODE_EXP
 
 class AliceLocalizer:
 
@@ -111,7 +119,9 @@ class AliceLocalizer:
             languageStyle='LTR',
             depth=0.0)
         self.fixation.autoDraw = False
-
+        
+        setupTriggers(self, mode)
+        
         # block sequence
         # X = fixate
         # I = intact
@@ -126,6 +136,7 @@ class AliceLocalizer:
         Output files (data, logs, etc.) are automatically handled by PsychoPy (ExperimentHandler)
         """
         #self.serial.close()
+        closeTriggers(self)
             
     def startExperiment(self, language = 'German', run = 1):
         """
@@ -143,6 +154,8 @@ class AliceLocalizer:
         self.setup()
         self.setupStimuli(language, run)
         self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.', ['space'])
+        startTriggers(self)
+        waitForFMRITrigger(self, 'Gleich geht es los...')
         self.fixation.autoDraw = True
         self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False
@@ -311,7 +324,11 @@ class AliceLocalizer:
                 wav.tStartRefresh = tThisFlipGlobal  # on global time
                 wav.play()  # start the sound (it finishes automatically)
             
-           # check for quit (typically the Esc key)
+            # check for fMRI trigger to log
+            if checkForFMRITrigger(self):
+                logging.log(level = logging.EXP, msg = 'fMRI trigger')
+            
+            # check for quit (typically the Esc key)
             if self.endExpNow or self.defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
             
@@ -431,7 +448,6 @@ class AliceLocalizer:
         # -------Ending Routine "pause"-------
         # Hide message component
         self.message.autoDraw = False
-        
         
 alice = AliceLocalizer()
 alice.startExperiment(language, run)
