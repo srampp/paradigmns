@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on Juli 24, 2020, at 10:48
+This experiment was created using PsychoPy3 Experiment Builder (v2020.2.2),
+    on August 13, 2020, at 13:14
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,15 +28,22 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+sys.path.append("../Utils/")
+from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)
+
+self = lambda:0
+setupTriggers(self)                      
+
+
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '3.2.4'
+psychopyVersion = '2020.2.2'
 expName = 'BreathHold'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
+dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
@@ -49,7 +56,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\niela\\Desktop\\PhD Project\\paradigms240720\\BreathHold\\BreathHold_lastrun.py',
+    originPath='C:\\data\\fMRI\\Reorganization\\paradigms\\BreathHold\\BreathHold_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -145,9 +152,11 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # ------Prepare to start Routine "instr"-------
+continueRoutine = True
 # update component parameters for each repeat
 key_resp.keys = []
 key_resp.rt = []
+_key_resp_allKeys = []
 # keep track of which components have finished
 instrComponents = [text, key_resp]
 for thisComponent in instrComponents:
@@ -162,7 +171,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 instrClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-continueRoutine = True
 
 # -------Run Routine "instr"-------
 while continueRoutine:
@@ -197,14 +205,10 @@ while continueRoutine:
         win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp.status == STARTED and not waitOnFlip:
         theseKeys = key_resp.getKeys(keyList=['space'], waitRelease=False)
-        if len(theseKeys):
-            theseKeys = theseKeys[0]  # at least one key was pressed
-            
-            # check for quit:
-            if "escape" == theseKeys:
-                endExpNow = True
-            key_resp.keys = theseKeys.name  # just the last key pressed
-            key_resp.rt = theseKeys.rt
+        _key_resp_allKeys.extend(theseKeys)
+        if len(_key_resp_allKeys):
+            key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+            key_resp.rt = _key_resp_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -263,6 +267,7 @@ for thisTrial in trials:
             exec('{} = thisTrial[paramName]'.format(paramName))
     
     # ------Prepare to start Routine "trial"-------
+    continueRoutine = True
     routineTimer.add(60.000000)
     # update component parameters for each repeat
     # keep track of which components have finished
@@ -279,7 +284,6 @@ for thisTrial in trials:
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
     frameN = -1
-    continueRoutine = True
     
     # -------Run Routine "trial"-------
     while continueRoutine and routineTimer.getTime() > 0:
@@ -357,6 +361,8 @@ for thisTrial in trials:
                 hold_breath.frameNStop = frameN  # exact frame index
                 win.timeOnFlip(hold_breath, 'tStopRefresh')  # time at next scr refresh
                 hold_breath.setAutoDraw(False)
+        if checkForFMRITrigger(self):
+            logging.log(level = logging.EXP, msg = 'fMRI trigger')
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -393,6 +399,7 @@ for thisTrial in trials:
 
 
 # ------Prepare to start Routine "end_breathe"-------
+continueRoutine = True
 routineTimer.add(20.000000)
 # update component parameters for each repeat
 # keep track of which components have finished
@@ -409,7 +416,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 end_breatheClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-continueRoutine = True
 
 # -------Run Routine "end_breathe"-------
 while continueRoutine and routineTimer.getTime() > 0:
@@ -462,6 +468,7 @@ thisExp.addData('breathe1.started', breathe1.tStartRefresh)
 thisExp.addData('breathe1.stopped', breathe1.tStopRefresh)
 
 # ------Prepare to start Routine "end"-------
+continueRoutine = True
 routineTimer.add(3.000000)
 # update component parameters for each repeat
 # keep track of which components have finished
@@ -478,7 +485,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 endClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-continueRoutine = True
 
 # -------Run Routine "end"-------
 while continueRoutine and routineTimer.getTime() > 0:
@@ -529,13 +535,14 @@ for thisComponent in endComponents:
         thisComponent.setAutoDraw(False)
 thisExp.addData('text_2.started', text_2.tStartRefresh)
 thisExp.addData('text_2.stopped', text_2.tStopRefresh)
+closeTriggers(self)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
 win.flip()
 
 # these shouldn't be strictly necessary (should auto-save)
-thisExp.saveAsWideText(filename+'.csv')
+thisExp.saveAsWideText(filename+'.csv', delim='auto')
 thisExp.saveAsPickle(filename)
 logging.flush()
 # make sure everything is closed down
