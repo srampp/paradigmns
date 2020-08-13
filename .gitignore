@@ -10,3 +10,4 @@ RestingState/RestingState_lastrun.py
 Archive/SentenceCompletion/data/
 *.pyc
 .vscode
+BreathHold/BreathHold_lastrun.py
