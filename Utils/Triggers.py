@@ -18,7 +18,7 @@ def setupTriggers(self, mode = MODE_EXP):
     if self.mode == MODE_EXP:
         DAQmxCreateTask("",byref(self.taskHandle))
         DAQmxCreateDIChan (self.taskHandle, "Dev1/port2/line0:7", "", DAQmx_Val_ChanPerLine)
-        DAQmxReadDigitalLines(self.taskHandle, 1, 0, DAQmx_Val_GroupByChannel, self.data, 8, byref(self.read), byref(self.numBytes), None)
+        DAQmxReadDigitalLines(self.taskHandle, 1, 1.0, DAQmx_Val_GroupByChannel, self.data, 8, byref(self.read), byref(self.numBytes), None)
         self.lastFMRIValue = self.data[1];
         
 def startTriggers(self):
@@ -36,11 +36,15 @@ def checkForFMRITrigger(self):
         else:
             return False
     
-    DAQmxReadDigitalLines(self.taskHandle, 1, 0, DAQmx_Val_GroupByChannel, self.data, 8, byref(self.read), byref(self.numBytes), None)
     trigger = False
-    if self.lastFMRIValue != self.data[1]:
-        trigger = True
-    self.lastFMRIValue = self.data[1]
+    try:
+        DAQmxReadDigitalLines(self.taskHandle, 1, 0, DAQmx_Val_GroupByChannel, self.data, 8, byref(self.read), byref(self.numBytes), None)
+        if self.lastFMRIValue != self.data[1]:
+            trigger = True
+        self.lastFMRIValue = self.data[1]
+    except DAQError as err:
+        # catch timeout errors here: no data availabe and thus no triggers
+        trigger = False
     
     return trigger
 
