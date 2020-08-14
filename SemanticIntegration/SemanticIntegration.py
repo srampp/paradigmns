@@ -22,6 +22,11 @@ import serial
 
 import csv
 
+sys.path.append("../Utils/")
+from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, 
+                        checkForFMRITrigger, startTriggers, checkForFMRITriggerOrResponse, 
+                        MODE_EXP, MODE_DEV, BUTTON_PRESSED, BUTTON_RELEASED)
+
 # specify mode here: training or experiment
 mode = 'experiment'
 
@@ -56,8 +61,12 @@ class Experiment:
         filenames, responseTimes = self.readStimulusList(stimuli_list)
         self.setup()
         self.waitForButton(-1, ['space'], 'Press space to start')  
+        self.fixation.autoDraw = True
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
-        self.waitForButton(-1, ['space'], 'Press space to continue')
+        self.fixation.autoDraw = False
+        startTriggers(self)
+        waitForFMRITrigger(self, 'Gleich geht es los...')
+        self.fixation.autoDraw = True
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
@@ -72,6 +81,7 @@ class Experiment:
         self.waitForButton(-1, ['space'], 'Press space to start')
         self.presentSound('wav' + os.sep +'Instruktionen.wav')
         self.waitForButton(-1, ['space'], 'Press space to continue')
+        self.fixation.autoDraw = False
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
             self.presentSound(path, responseTime=responseTimes[n]/1000)
@@ -102,7 +112,6 @@ class Experiment:
 
         #self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
 
-        # windowed mode for now for easier debugging
         self.win = visual.Window(
             size=(1024, 768), fullscr=True, screen=0, 
             winType='pyglet', allowGUI=False, allowStencil=False,
@@ -118,7 +127,7 @@ class Experiment:
             color='white', colorSpace='rgb', opacity=1, 
             languageStyle='LTR',
             depth=0.0)
-        self.fixation.autoDraw = True
+        self.fixation.autoDraw = False
 
         self.message = visual.TextStim(win=self.win, name='message',
             text='Press key to start',
@@ -127,6 +136,8 @@ class Experiment:
             color='white', colorSpace='rgb', opacity=1, 
             languageStyle='LTR',
             depth=0.0)
+            
+        setupTriggers(self)
 
     def finish(self):
         """
@@ -134,6 +145,7 @@ class Experiment:
         Output files (data, logs, etc.) are automatically handled by PsychoPy (ExperimentHandler)
         """
         #self.serial.close()
+        closeTriggers(self)
 
     def readStimulusList(self, filename):
         """
@@ -216,6 +228,15 @@ class Experiment:
                 else:
                     keyb.clock.reset()
                     resetDone = True
+            
+            # check for fMRI trigger and responses to log
+            trigger, button1, button2 = checkForFMRITriggerOrResponse(self)
+            if trigger:
+                logging.log(level = logging.EXP, msg = 'fMRI trigger')
+            if button1 == BUTTON_PRESSED:
+                logging.log(level = logging.EXP, msg = 'Button 1 pressed')
+            if button2 == BUTTON_PRESSED:
+                logging.log(level = logging.EXP, msg = 'Button 2 pressed')
 
             # check for quit (typically the Esc key)
             if self.endExpNow or self.defaultKeyboard.getKeys(keyList=["escape"]):
