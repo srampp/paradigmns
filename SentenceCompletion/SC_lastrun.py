@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v3.2.4),
-    on Juli 27, 2020, at 10:48
+This experiment was created using PsychoPy3 Experiment Builder (v2020.2.2),
+    on August 14, 2020, at 11:11
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,15 +28,22 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+sys.path.append("../Utils/")
+from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)
+
+self = lambda:0
+
+
+
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '3.2.4'
+psychopyVersion = '2020.2.2'
 expName = 'SC_experiment'  # from the Builder filename that created this script
-expInfo = {'session': '001', 'participant': ''}
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
+expInfo = {'session': '001', 'participant': '', 'Send triggers': 'yes'}
+dlg = gui.DlgFromDict(dictionary=expInfo, sort_keys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
@@ -49,7 +56,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\niela\\Documents\\GitHub\\paradigms\\SentenceCompletion\\SC_lastrun.py',
+    originPath='C:\\data\\fMRI\\Reorganization\\paradigms\\SentenceCompletion\\SC_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -63,10 +70,11 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=[1680, 1050], fullscr=True, screen=0, 
+    size=[1707, 960], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[-1,-1,-1], colorSpace='rgb',
-    blendMode='avg', useFBO=True)
+    blendMode='avg', useFBO=True, 
+    units='norm')
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -97,6 +105,12 @@ text_SC_task = visual.TextStim(win=win, name='text_SC_task',
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
+if expInfo['Send triggers'] == 'yes':
+    setupTriggers(self, MODE_EXP)
+else:
+    setupTriggers(self, MODE_DEV)
+    
+startTriggers(self)
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -113,9 +127,11 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
 # ------Prepare to start Routine "instruction"-------
+continueRoutine = True
 # update component parameters for each repeat
 key_resp_start.keys = []
 key_resp_start.rt = []
+_key_resp_start_allKeys = []
 # keep track of which components have finished
 instructionComponents = [text_Instruction, key_resp_start]
 for thisComponent in instructionComponents:
@@ -130,7 +146,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 instructionClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-continueRoutine = True
 
 # -------Run Routine "instruction"-------
 while continueRoutine:
@@ -165,14 +180,10 @@ while continueRoutine:
         win.callOnFlip(key_resp_start.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp_start.status == STARTED and not waitOnFlip:
         theseKeys = key_resp_start.getKeys(keyList=['space'], waitRelease=False)
-        if len(theseKeys):
-            theseKeys = theseKeys[0]  # at least one key was pressed
-            
-            # check for quit:
-            if "escape" == theseKeys:
-                endExpNow = True
-            key_resp_start.keys = theseKeys.name  # just the last key pressed
-            key_resp_start.rt = theseKeys.rt
+        _key_resp_start_allKeys.extend(theseKeys)
+        if len(_key_resp_start_allKeys):
+            key_resp_start.keys = _key_resp_start_allKeys[-1].name  # just the last key pressed
+            key_resp_start.rt = _key_resp_start_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -231,6 +242,7 @@ for thisTrials_stimulu in trials_stimuli:
             exec('{} = thisTrials_stimulu[paramName]'.format(paramName))
     
     # ------Prepare to start Routine "SC_task"-------
+    continueRoutine = True
     routineTimer.add(6.000000)
     # update component parameters for each repeat
     text_SC_task.setText(SC_Stimuli)
@@ -248,7 +260,6 @@ for thisTrials_stimulu in trials_stimuli:
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     SC_taskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
     frameN = -1
-    continueRoutine = True
     
     # -------Run Routine "SC_task"-------
     while continueRoutine and routineTimer.getTime() > 0:
@@ -275,6 +286,8 @@ for thisTrials_stimulu in trials_stimuli:
                 text_SC_task.frameNStop = frameN  # exact frame index
                 win.timeOnFlip(text_SC_task, 'tStopRefresh')  # time at next scr refresh
                 text_SC_task.setAutoDraw(False)
+        if checkForFMRITrigger(self):
+            logging.log(level = logging.EXP, msg = 'fMRI trigger')
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -305,6 +318,7 @@ for thisTrials_stimulu in trials_stimuli:
 
 
 # ------Prepare to start Routine "end"-------
+continueRoutine = True
 routineTimer.add(5.000000)
 # update component parameters for each repeat
 # keep track of which components have finished
@@ -321,7 +335,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 endClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-continueRoutine = True
 
 # -------Run Routine "end"-------
 while continueRoutine and routineTimer.getTime() > 0:
@@ -372,13 +385,14 @@ for thisComponent in endComponents:
         thisComponent.setAutoDraw(False)
 thisExp.addData('text_end.started', text_end.tStartRefresh)
 thisExp.addData('text_end.stopped', text_end.tStopRefresh)
+closeTriggers(self)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
 win.flip()
 
 # these shouldn't be strictly necessary (should auto-save)
-thisExp.saveAsWideText(filename+'.csv')
+thisExp.saveAsWideText(filename+'.csv', delim='auto')
 thisExp.saveAsPickle(filename)
 logging.flush()
 # make sure everything is closed down
