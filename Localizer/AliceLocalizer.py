@@ -44,8 +44,6 @@ language = 'GermanMono'
 # run 1 or 2
 run = 1
 
-# Experiment (MODE_EXP) or development mode (MODE_DEV) for using triggers
-mode = MODE_EXP
 
 class AliceLocalizer:
 
@@ -75,7 +73,7 @@ class AliceLocalizer:
         os.chdir(self._thisDir)
         self.stimuliDir = os.path.join(self._thisDir, 'stimuli')
         expName = 'AliceLocalizer'
-        expInfo = {'participant': '', 'session': '001'}
+        expInfo = {'participant': '', 'session': '001', 'Send triggers': 'yes'}
 
         dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
         if dlg.OK == False:
@@ -120,7 +118,10 @@ class AliceLocalizer:
             depth=0.0)
         self.fixation.autoDraw = False
         
-        setupTriggers(self, mode)
+        if expInfo['Send triggers'] == 'yes':
+            setupTriggers(self, MODE_EXP)
+        else:
+            setupTriggers(self, MODE_DEV)
         
         # block sequence
         # X = fixate
