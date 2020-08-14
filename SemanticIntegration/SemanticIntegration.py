@@ -62,9 +62,9 @@ class Experiment:
         self.setup()
         self.waitForButton(-1, ['space'], 'Press space to start')  
         self.fixation.autoDraw = True
+        startTriggers(self)
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
         self.fixation.autoDraw = False
-        startTriggers(self)
         waitForFMRITrigger(self, 'Gleich geht es los...')
         self.fixation.autoDraw = True
         for n in range(0, len(filenames)):
@@ -94,7 +94,7 @@ class Experiment:
         self._thisDir = os.path.dirname(os.path.abspath(__file__))
         os.chdir(self._thisDir)
         expName = 'SemanticIntegration'  # from the Builder filename that created this script
-        expInfo = {'participant': '', 'session': '001'}
+        expInfo = {'participant': '', 'session': '001', 'Send triggers': 'yes'}
         dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
         if dlg.OK == False:
             core.quit()  # user pressed cancel
@@ -137,7 +137,10 @@ class Experiment:
             languageStyle='LTR',
             depth=0.0)
             
-        setupTriggers(self)
+        if expInfo['Send triggers'] == "yes":
+            setupTriggers(self, MODE_EXP)
+        else:
+            setupTriggers(self, MODE_DEV)
 
     def finish(self):
         """
