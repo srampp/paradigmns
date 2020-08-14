@@ -7,7 +7,7 @@
     <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
-    <Param name="Experiment info" updates="None" val="{u'session': u'001', u'participant': u''}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{'session': '001', 'participant': '', 'Send triggers': 'yes'}" valType="code"/>
     <Param name="Force stereo" updates="None" val="True" valType="bool"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="HTML path" updates="None" val="html" valType="str"/>
@@ -26,7 +26,7 @@
     <Param name="Show mouse" updates="None" val="False" valType="bool"/>
     <Param name="Units" updates="None" val="use prefs" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
-    <Param name="Window size (pixels)" updates="None" val="[1680, 1050]" valType="code"/>
+    <Param name="Window size (pixels)" updates="None" val="[1707, 960]" valType="code"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="color" updates="None" val="$[-1,-1,-1]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
@@ -77,6 +77,23 @@
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="code_3" valType="code"/>
       </CodeComponent>
+      <CodeComponent name="code_4">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="if ((expInfo[&quot;Send triggers&quot;] === &quot;yes&quot;)) {&amp;#10;    setupTriggers(this, MODE_EXP);&amp;#10;} else {&amp;#10;    setupTriggers(this, MODE_DEV);&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="if expInfo['Send triggers'] == 'yes':&amp;#10;    setupTriggers(self, MODE_EXP)&amp;#10;else:&amp;#10;    setupTriggers(self, MODE_DEV)&amp;#10;    &amp;#10;startTriggers(self)" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_4" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="instruction">
       <TextComponent name="text_Instruction">
@@ -122,7 +139,7 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
       <CodeComponent name="code">
-        <Param name="Before Experiment" updates="constant" val="sys.path.append(&quot;../Utils/&quot;)&amp;#10;from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)&amp;#10;&amp;#10;self = lambda:0&amp;#10;setupTriggers(self)                      " valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="sys.path.append(&quot;../Utils/&quot;)&amp;#10;from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)&amp;#10;&amp;#10;self = lambda:0&amp;#10;" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
