@@ -2,6 +2,7 @@ from PyDAQmx import *
 from ctypes import *
 import numpy as np
 from psychopy import logging
+from psychopy.hardware import keyboard
 import time
 
 MODE_DEV = 1
@@ -122,7 +123,6 @@ def waitForFMRITrigger(self, message):
     continueRoutine = True
     
     self.message.text = message
-    self.resetTrialComponents([self.message])
     self.message.autoDraw = True
     
     while continueRoutine:
@@ -142,3 +142,4 @@ def waitForFMRITrigger(self, message):
     # -------Ending Routine "pause"-------
     # Hide message component
     self.message.autoDraw = False
+    
