@@ -262,6 +262,7 @@ class Experiment:
         self.thisExp.addData('wav.started', wav.tStart)
         self.thisExp.addData('startTime', startTime)
         self.thisExp.addData('endTime', endTime)
+        self.thisExp.addData('responseTime', responseTime)
         self.thisExp.nextEntry()
         
         self.routineTimer.reset()
