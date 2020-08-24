@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.2),
-    on August 14, 2020, at 11:45
+    on August 24, 2020, at 10:18
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -29,7 +29,7 @@ import sys  # to get file system encoding
 from psychopy.hardware import keyboard
 
 sys.path.append("../Utils/")
-from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, waitForFMRITriggerNoMessage, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)
+from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, checkForFMRITrigger, startTriggers, MODE_EXP, MODE_DEV)
 
 self = lambda:0
                    
@@ -96,16 +96,6 @@ text = visual.TextStim(win=win, name='text',
     depth=0.0);
 key_resp = keyboard.Keyboard()
 
-# Initialize components for Routine "WaitForTrigger"
-WaitForTriggerClock = core.Clock()
-message = visual.TextStim(win=win, name='message',
-    text="Gleicht geht's los...",
-    font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-1.0);
-
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 text_3 = visual.TextStim(win=win, name='text_3',
@@ -115,6 +105,14 @@ text_3 = visual.TextStim(win=win, name='text_3',
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
+self.first = True
+message = visual.TextStim(win=win, name='message',
+    text=None,
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -217,78 +215,6 @@ thisExp.addData('text.stopped', text.tStopRefresh)
 # the Routine "instructions" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "WaitForTrigger"-------
-continueRoutine = True
-# update component parameters for each repeat
-if expInfo['Send triggers'] == 'yes':
-    setupTriggers(self, MODE_EXP)
-else:
-    setupTriggers(self, MODE_DEV)
-    
-startTriggers(self)
-
-
-# keep track of which components have finished
-WaitForTriggerComponents = [message]
-for thisComponent in WaitForTriggerComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-WaitForTriggerClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "WaitForTrigger"-------
-while continueRoutine:
-    # get current time
-    t = WaitForTriggerClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=WaitForTriggerClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # *message* updates
-    if message.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        message.frameNStart = frameN  # exact frame index
-        message.tStart = t  # local t and not account for scr refresh
-        message.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(message, 'tStartRefresh')  # time at next scr refresh
-        message.setAutoDraw(True)
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in WaitForTriggerComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "WaitForTrigger"-------
-for thisComponent in WaitForTriggerComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-self.win = win
-waitForFMRITriggerNoMessage(self)
-thisExp.addData('message.started', message.tStartRefresh)
-thisExp.addData('message.stopped', message.tStopRefresh)
-# the Routine "WaitForTrigger" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=1, method='sequential', 
     extraInfo=expInfo, originPath=-1,
@@ -313,8 +239,25 @@ for thisTrial in trials:
     routineTimer.add(10.000000)
     # update component parameters for each repeat
     text_3.setText(letter)
+    if self.first:
+        if expInfo['Send triggers'] == 'yes':
+            setupTriggers(self, MODE_EXP)
+        else:
+            setupTriggers(self, MODE_DEV)
+            
+        startTriggers(self)
+    
+        self.message = message
+        self.endExpNow = endExpNow
+        self.defaultKeyboard = defaultKeyboard
+        self.win = win
+    
+        if self.first:
+            print("Waiting")
+            self.first = False
+            waitForFMRITrigger(self, "+")
     # keep track of which components have finished
-    trialComponents = [text_3]
+    trialComponents = [text_3, message]
     for thisComponent in trialComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -356,6 +299,23 @@ for thisTrial in trials:
         if checkForFMRITrigger(self):
             logging.log(level = logging.EXP, msg = 'fMRI trigger')
         
+        # *message* updates
+        if message.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            message.frameNStart = frameN  # exact frame index
+            message.tStart = t  # local t and not account for scr refresh
+            message.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(message, 'tStartRefresh')  # time at next scr refresh
+            message.setAutoDraw(True)
+        if message.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > message.tStartRefresh + 0-frameTolerance:
+                # keep track of stop time/frame for later
+                message.tStop = t  # not accounting for scr refresh
+                message.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(message, 'tStopRefresh')  # time at next scr refresh
+                message.setAutoDraw(False)
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -379,6 +339,8 @@ for thisTrial in trials:
             thisComponent.setAutoDraw(False)
     trials.addData('text_3.started', text_3.tStartRefresh)
     trials.addData('text_3.stopped', text_3.tStopRefresh)
+    trials.addData('message.started', message.tStartRefresh)
+    trials.addData('message.stopped', message.tStopRefresh)
     thisExp.nextEntry()
     
 # completed 1 repeats of 'trials'

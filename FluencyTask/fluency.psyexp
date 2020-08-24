@@ -123,10 +123,10 @@
       <CodeComponent name="code_3">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="self.first = True" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if expInfo['Send triggers'] == 'yes':&amp;#10;    setupTriggers(self, MODE_EXP)&amp;#10;else:&amp;#10;    setupTriggers(self, MODE_DEV)&amp;#10;    &amp;#10;startTriggers(self)&amp;#10;&amp;#10;self.message = message&amp;#10;self.endExpNow = endExpNow&amp;#10;self.defaultKeyboard = defaultKeyboard&amp;#10;self.win = win&amp;#10;waitForFMRITrigger(self, &quot;Gleicht geht es los...&quot;)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if self.first:&amp;#10;    if expInfo['Send triggers'] == 'yes':&amp;#10;        setupTriggers(self, MODE_EXP)&amp;#10;    else:&amp;#10;        setupTriggers(self, MODE_DEV)&amp;#10;        &amp;#10;    startTriggers(self)&amp;#10;&amp;#10;    self.message = message&amp;#10;    self.endExpNow = endExpNow&amp;#10;    self.defaultKeyboard = defaultKeyboard&amp;#10;    self.win = win&amp;#10;&amp;#10;    print(&quot;Waiting&quot;)&amp;#10;    self.first = False&amp;#10;    waitForFMRITrigger(self, &quot;+&quot;)" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="if checkForFMRITrigger(self):&amp;#10;    logging.log(level = logging.EXP, msg = 'fMRI trigger')" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
