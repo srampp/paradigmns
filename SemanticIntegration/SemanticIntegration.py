@@ -28,7 +28,7 @@ from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger,
                         MODE_EXP, MODE_DEV, BUTTON_PRESSED, BUTTON_RELEASED)
 
 # specify mode here: training or experiment
-mode = 'training'
+mode = 'experiment'
 
 # specify stimuli list to use (not necessary for training which always uses stimuli_list_training.csv)
 stimuliList = 'stimuli_list1_session2.csv'
@@ -65,7 +65,7 @@ class Experiment:
         startTriggers(self)
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
         self.fixation.autoDraw = False
-        waitForFMRITrigger(self, 'Gleich geht es los...')
+        waitForFMRITrigger(self, '+')
         self.fixation.autoDraw = True
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
