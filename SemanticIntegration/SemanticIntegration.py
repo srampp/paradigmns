@@ -28,7 +28,7 @@ from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger,
                         MODE_EXP, MODE_DEV, BUTTON_PRESSED, BUTTON_RELEASED)
 
 # specify mode here: training or experiment
-mode = 'experiment'
+mode = 'training'
 
 # specify stimuli list to use (not necessary for training which always uses stimuli_list_training.csv)
 stimuliList = 'stimuli_list1_session2.csv'
@@ -78,6 +78,7 @@ class Experiment:
         """
         filenames, responseTimes = self.readStimulusList('stimuli_list_training.csv')
         self.setup()
+        startTriggers(self)
         self.waitForButton(-1, ['space'], 'Press space to start')
         self.presentSound('wav' + os.sep +'Instruktionen.wav')
         self.waitForButton(-1, ['space'], 'Press space to continue')
