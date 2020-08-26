@@ -156,7 +156,7 @@ class AliceLocalizer:
         self.setupStimuli(language, run)
         self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.', ['space'])
         startTriggers(self)
-        waitForFMRITrigger(self, 'Gleich geht es los...')
+        waitForFMRITrigger(self, '+')
         self.fixation.autoDraw = True
         self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False
@@ -202,7 +202,7 @@ class AliceLocalizer:
         self.degraded = []
         
         seq = self.makeSimulusSequence(run)
-        blocks = self.blocks[run]
+        blocks = self.blocks[run-1]
         
         i = 0
         for b in blocks:
@@ -221,7 +221,7 @@ class AliceLocalizer:
         degraded = list(range(1, 24))
         lastIntact = False
         
-        blocks = self.blocks[run]
+        blocks = self.blocks[run-1]
         for b in blocks:
             if (b == 'I'):
                 ok = False
