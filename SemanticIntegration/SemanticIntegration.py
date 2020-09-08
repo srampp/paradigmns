@@ -66,6 +66,7 @@ class Experiment:
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
         self.fixation.autoDraw = False
         waitForFMRITrigger(self, '+')
+        logging.log(level = logging.EXP, msg = 'fMRI trigger (first)\t' + str(self.globalClock.getTime()))
         self.fixation.autoDraw = True
         for n in range(0, len(filenames)):
             path = 'wav' + os.sep + filenames[n]
@@ -201,6 +202,7 @@ class Experiment:
         # reset timers
         t = 0
         startTime = trialClock.getTime()
+        startTimeGlobal = self.globalClock.getTime()
         _timeToFirstFrame = self.win.getFutureFlipTime(clock="now")
         trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
@@ -220,6 +222,7 @@ class Experiment:
                 wav.tStart = t  # local t and not account for scr refresh
                 wav.tStartRefresh = tThisFlipGlobal  # on global time
                 wav.play()  # start the sound (it finishes automatically)
+                logging.log(level = logging.EXP, msg = 'Playback started\t' + str(self.globalClock.getTime()) + '\t' +wavfile)
             
             # Check for a response. This doesn't need to be sychronized with the next 
             # frame flip
@@ -236,7 +239,8 @@ class Experiment:
             # check for fMRI trigger and responses to log
             trigger, button1, button2 = checkForFMRITriggerOrResponse(self)
             if trigger:
-                logging.log(level = logging.EXP, msg = 'fMRI trigger')
+                gt = self.globalClock.getTime()
+                logging.log(level = logging.EXP, msg = 'fMRI trigger\t' + str(gt))
             if button1 == BUTTON_PRESSED:
                 logging.log(level = logging.EXP, msg = 'Button 1 pressed')
             if button2 == BUTTON_PRESSED:
@@ -256,12 +260,14 @@ class Experiment:
         # -------Ending Routine -------
         wav.stop()  # ensure sound has stopped at end of routine
         endTime = trialClock.getTime()
+        logging.log(level = logging.EXP, msg = 'Trial ended\t' + str(self.globalClock.getTime()))
         
         self.thisExp.addData('wavfile', wavfile)
         self.thisExp.addData('response', response)
         self.thisExp.addData('rt', rt)
         self.thisExp.addData('wav.started', wav.tStart)
         self.thisExp.addData('startTime', startTime)
+        self.thisExp.addData('startTimeGlobal', startTimeGlobal)
         self.thisExp.addData('endTime', endTime)
         self.thisExp.addData('responseTime', responseTime)
         self.thisExp.nextEntry()
