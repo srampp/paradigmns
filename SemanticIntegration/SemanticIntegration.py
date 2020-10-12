@@ -26,13 +26,6 @@ sys.path.append("../Utils/")
 from Triggers import (setupTriggers, closeTriggers, waitForFMRITrigger, 
                         checkForFMRITrigger, startTriggers, checkForFMRITriggerOrResponse, 
                         MODE_EXP, MODE_DEV, BUTTON_PRESSED, BUTTON_RELEASED)
-
-# specify mode here: training or experiment
-mode = 'experiment'
-
-# specify stimuli list to use (not necessary for training which always uses stimuli_list_training.csv)
-stimuliList = 'stimuli_list1_session2.csv'
-
 class Experiment:
     
     def __init__(self):
@@ -47,8 +40,26 @@ class Experiment:
         self.frameTolerance = 0.001 
         self.endExpNow = False
         #self.serialPort = 'COM1'
+    
+    def start(self):
+        self.setup()
+
+        run = int(self.expInfo['run'])
+        mode = self.expInfo['mode']
+        stimList = self.expInfo['list']
+        if stimList == 'generate':
+            list = ''
+
+        if mode == 'training':
+            self.startTraining()
+        elif mode == 'experiment':
+            self.startExperiment(list, run)
+        else:
+            print('Unknown mode. Use either "training" or "experiment"')
+
+
         
-    def startExperiment(self, stimuli_list):
+    def startExperiment(self, stimuli_list, run):
         """
         Start the experiment with the specified stimuli list.
 
@@ -57,9 +68,14 @@ class Experiment:
         stimuli_list : str
             list of stimuli to use. Only specify the name of the list. 
             The respective file should reside in the folder of the python file. Wav-files should be stored in a subfolder "wav" without further subdirectories.
+            If stimuli_list is empty, a reandomized list will be generated or used if it is already present. These lists are created for each
+            participant and session and are stored in the subfolder 'stim_lists'
         """
-        filenames, responseTimes = self.readStimulusList(stimuli_list)
-        self.setup()
+        if not stimuli_list:
+            filenames, responseTimes = self.generateOrReadStimulusList(run)
+        else:
+            filenames, responseTimes = self.readStimulusList(stimuli_list)
+                
         self.waitForButton(-1, ['space'], 'Press space to start')  
         self.fixation.autoDraw = True
         startTriggers(self)
@@ -78,7 +94,6 @@ class Experiment:
         Start a training run which always uses the standard training stimuli list: stimuli_list_training.csv
         """
         filenames, responseTimes = self.readStimulusList('stimuli_list_training.csv')
-        self.setup()
         startTriggers(self)
         self.waitForButton(-1, ['space'], 'Press space to start')
         self.presentSound('wav' + os.sep +'Instruktionen.wav')
@@ -96,14 +111,14 @@ class Experiment:
         self._thisDir = os.path.dirname(os.path.abspath(__file__))
         os.chdir(self._thisDir)
         expName = 'SemanticIntegration'  # from the Builder filename that created this script
-        expInfo = {'participant': '', 'session': '001', 'Send triggers': 'yes'}
+        expInfo = {'mode': 'experiment', 'participant': '', 'session': '001', 'run': '1', 'list': 'generate', 'screen': '0', 'Send triggers': 'yes'}
         dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
         if dlg.OK == False:
             core.quit()  # user pressed cancel
         expInfo['date'] = data.getDateStr()  # add a simple timestamp
         expInfo['expName'] = expName
         expInfo['psychopyVersion'] = self.psychopyVersion
-        filename = self._thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+        filename = self._thisDir + os.sep + u'data/%s_%s_%s_%s' % (expInfo['participant'], expName, expInfo['run'], expInfo['date'])
         self.thisExp = data.ExperimentHandler(name=expName, version='',
             extraInfo=expInfo, runtimeInfo=None,
             originPath=self._thisDir + os.sep + 'SemanticIntegration.py',
@@ -115,7 +130,7 @@ class Experiment:
         #self.serial = serial.Serial(self.serialPort, 19200, timeout=1)
 
         self.win = visual.Window(
-            size=(1024, 768), fullscr=True, screen=0, 
+            size=(1024, 768), fullscr=True, screen=int(expInfo['screen']), 
             winType='pyglet', allowGUI=False, allowStencil=False,
             monitor='testMonitor', color='black', colorSpace='rgb',
             blendMode='avg', useFBO=True, 
@@ -139,10 +154,15 @@ class Experiment:
             languageStyle='LTR',
             depth=0.0)
             
+        self.expInfo = expInfo
+        self.expName = expName
+            
         if expInfo['Send triggers'] == "yes":
             setupTriggers(self, MODE_EXP)
         else:
             setupTriggers(self, MODE_DEV)
+            
+            
 
     def finish(self):
         """
@@ -171,6 +191,161 @@ class Experiment:
                 responseTimes.append(int(tokens[1]))
 
         return filenames, responseTimes
+    
+    def getResponseTimeList(self, stimFiles):
+        filename = self._thisDir + os.sep + u'responseTimes.csv'
+        filenames, responseTimes = self.readStimulusList(filename)
+
+        times = []
+        for n in range(0, len(stimFiles)):
+            stim = stimFiles[n]
+            index = filenames.index(stim)
+            times.append(responseTimes[index])
+
+        return times
+    
+    def writeStimulusList(self, filename, stimuli, responseTimes):
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';', dialect='excel')
+            for i in range(0, len(stimuli)):
+                writer.writerow([stimuli[i], responseTimes[i]])
+
+    def generateOrReadStimulusList(self, run):
+        stimFile = self._thisDir + os.sep + u'stim_lists\\%s_stim_%s.csv' % (self.expInfo['participant'], self.expName)
+
+        filenames = []
+        responseTimes = []
+        if os.path.exists(stimFile):
+            print('Using existing stim list')
+            filenames, responseTimes = self.readStimulusList(stimFile)
+        else:
+            print('Generating new stim list')
+            filenames, responseTimes = self.generateStimulusList()
+            self.writeStimulusList(stimFile, filenames, responseTimes)
+
+        # Select the half corresponding to run 1 or 2
+        center = int(len(filenames)/2)
+        if run == 1:
+            filenames = filenames[0:center]
+            responseTimes = responseTimes[0:center]
+        else:
+            filenames = filenames[center:len(filenames)]
+            responseTimes = filenames[center:len(filenames)]
+
+        return filenames, responseTimes
+    
+    def generateStimulusList(self):
+        sequenceA = []
+        sequenceB = []
+        
+        expectedA = []
+        expectedB = []
+        inds = list(range(1, 61))
+        np.random.shuffle(inds)
+        for i in range(0, 30):
+            expectedA.append('expected_' + str(inds[i]) + '.wav')
+            sequenceA.append('exp')
+        for i in range(30, 60):
+            expectedB.append('expected_' + str(inds[i]) + '.wav')
+            sequenceB.append('exp')
+        
+        anomalousA = []
+        anomalousB = []
+        inds = list(range(1, 61))
+        np.random.shuffle(inds)
+        for i in range(0, 30):
+            anomalousA.append('anomalous_' + str(inds[i]) + '.wav')
+            sequenceA.append('an')
+        for i in range(30, 60):
+            anomalousB.append('anomalous_' + str(inds[i]) + '.wav')
+            sequenceB.append('an')
+            
+        unexpectedA = []
+        unexpectedB = []
+        inds = list(range(1, 61))
+        np.random.shuffle(inds)
+        for i in range(0, 30):
+            unexpectedA.append('unexpected_' + str(inds[i]) + '.wav')
+            sequenceA.append('unexp')
+        for i in range(30, 60):
+            unexpectedB.append('unexpected_' + str(inds[i]) + '.wav')
+            sequenceB.append('unexp')
+            
+        pseudowordA = []
+        pseudowordB = []
+        inds = list(range(1, 61))
+        np.random.shuffle(inds)
+        for i in range(0, 60):
+            version = np.random.randint(0, 2)
+            if version == 0:
+                pseudowordA.append('pseudoword_' + str(inds[i]) + 'a.wav')
+                pseudowordB.append('pseudoword_' + str(inds[i]) + 'b.wav')
+            else:
+                pseudowordA.append('pseudoword_' + str(inds[i]) + 'b.wav')
+                pseudowordB.append('pseudoword_' + str(inds[i]) + 'a.wav')
+                
+            sequenceA.append('pseudo')
+            sequenceB.append('pseudo')
+            
+        
+        keepTrying = True
+        while(keepTrying):
+            # shuffle sequence
+            np.random.shuffle(sequenceA)
+            
+            # test sequence
+            ok = self.checkSequence(sequenceA)
+            keepTrying = not ok
+        
+        keepTrying = True
+        while(keepTrying):
+            # shuffle sequence
+            np.random.shuffle(sequenceB)
+            
+            # test sequence
+            ok = self.checkSequence(sequenceB)         
+            keepTrying = not ok
+
+        sequence = []
+        expectedA = iter(expectedA)
+        unexpectedA = iter(unexpectedA)
+        anomalousA = iter(anomalousA)
+        pseudowordA = iter(pseudowordA)
+        for i in range(0, len(sequenceA)):
+            if sequenceA[i] == 'exp':
+                sequence.append(next(expectedA))
+            if sequenceA[i] == 'unexp':
+                sequence.append(next(unexpectedA))
+            if sequenceA[i] == 'an':
+                sequence.append(next(anomalousA))
+            if sequenceA[i] == 'pseudo':
+                sequence.append(next(pseudowordA))
+        
+        expectedB = iter(expectedB)
+        unexpectedB = iter(unexpectedB)
+        anomalousB = iter(anomalousB)
+        pseudowordB = iter(pseudowordB)
+        for i in range(0, len(sequenceB)):
+            if sequenceB[i] == 'exp':
+                sequence.append(next(expectedB))
+            if sequenceB[i] == 'unexp':
+                sequence.append(next(unexpectedB))
+            if sequenceB[i] == 'an':
+                sequence.append(next(anomalousB))
+            if sequenceB[i] == 'pseudo':
+                sequence.append(next(pseudowordB))
+
+        responseTimes = self.getResponseTimeList(sequence)
+        
+        return sequence, responseTimes
+        
+    def checkSequence(self, sequence):
+        ok = True
+        for i in range(2, len(sequence)):
+            if (sequence[i-2] == sequence[i-1]) and (sequence[i-1] == sequence[i]):
+                ok = False
+                break
+        return ok            
 
     def presentSound(self, wavfile, responseTime=0, keyList=['1', '2']):
         """
@@ -405,36 +580,6 @@ class Experiment:
             if detected >= numberOfSignals:
                 continueRoutine = False
         
-
-# Use this for command line usage
-# if len(sys.argv) == 1:
-#     print('Format: python.exe SemanticIntegration.py <mode> <stimuli list>')
-#     print('mode: Either "training" or "experiment".')
-#     print('training: use the standard training list (stimuli_list_training.csv) to practice before the actual experiment. If a stimuli list is specified, it will be ignored.')
-#     print('experiment: perform the actual experiment. In this case, the stimuli list needs to be specified.')
-# else:
-#     mode = sys.argv[1]
-#     if mode == "training":
-#         print('Training mode')
-#         experiment = Experiment()
-#         experiment.startTraining()
-#     elif mode == "experiment":
-#         print('Experiment mode using ' + sys.argv[2])
-#         experiment = Experiment()
-#         experiment.startExperiment(sys.argv[2])
-#     else:
-#         print('Unknown mode: ' + mode + '. Only "training" or "experiment" are allowed.')
-
-# Comment out this for use from PsychoPy Coder
-# Options are listed at the very top of this file for easier access
-if mode == "training":
-    print('Training mode')
-    experiment = Experiment()
-    experiment.startTraining()
-elif mode == "experiment":
-    print('Experiment mode using ' + stimuliList)
-    experiment = Experiment()
-    experiment.startExperiment(stimuliList)
-else:
-    print('Unknown mode: ' + mode + '. Only "training" or "experiment" are allowed.')
+experiment = Experiment()
+experiment.start()
 
