@@ -211,7 +211,7 @@ class Experiment:
                 writer.writerow([stimuli[i], responseTimes[i]])
 
     def generateOrReadStimulusList(self, run):
-        stimFile = self._thisDir + os.sep + u'stim_lists\\%s_stim_%s.csv' % (self.expInfo['participant'], self.expName)
+        stimFile = self._thisDir + os.sep + u'stim_lists\\%s_%s_stim_%s.csv' % (self.expInfo['participant'], self.expInfo['session'], self.expName)
 
         filenames = []
         responseTimes = []
@@ -225,12 +225,13 @@ class Experiment:
 
         # Select the half corresponding to run 1 or 2
         center = int(len(filenames)/2)
+        length = len(filenames)
         if run == 1:
             filenames = filenames[0:center]
             responseTimes = responseTimes[0:center]
         else:
-            filenames = filenames[center:len(filenames)]
-            responseTimes = filenames[center:len(filenames)]
+            filenames = filenames[center:length]
+            responseTimes = responseTimes[center:length]
 
         return filenames, responseTimes
     
