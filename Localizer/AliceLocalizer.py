@@ -42,7 +42,7 @@ from ctypes import *
 language = 'GermanMono'
 
 # run 1 or 2
-run = 1
+run = 2
 
 
 class AliceLocalizer:
@@ -110,7 +110,7 @@ class AliceLocalizer:
         self.fixation.autoDraw = True
 
         self.message = visual.TextStim(win=self.win, name='message',
-            text='Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.',
+            text='Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind.',
             font='Arial',
             pos=(0, 0), height=0.07, wrapWidth=None, ori=0, 
             color='white', colorSpace='rgb', opacity=1, 
@@ -154,9 +154,9 @@ class AliceLocalizer:
         """
         self.setup()
         self.setupStimuli(language, run)
-        self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind. Dies ist Absicht und kein technischer Fehler.', ['space'])
+        self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind.', ['space'])
         startTriggers(self)
-        waitForFMRITrigger(self, '+')
+        waitForFMRITrigger(self, 'Gleich geht es los...')
         self.fixation.autoDraw = True
         self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False

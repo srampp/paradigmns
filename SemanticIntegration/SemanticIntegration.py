@@ -81,7 +81,7 @@ class Experiment:
         startTriggers(self)
         self.presentSound('wav' + os.sep + 'Instruktionen.wav')
         self.fixation.autoDraw = False
-        waitForFMRITrigger(self, '+')
+        waitForFMRITrigger(self, 'Gleich geht es los...')
         logging.log(level = logging.EXP, msg = 'fMRI trigger (first)\t' + str(self.globalClock.getTime()))
         self.fixation.autoDraw = True
         for n in range(0, len(filenames)):
