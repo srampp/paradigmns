@@ -201,7 +201,7 @@ class AliceLocalizer:
         self.intact = []
         self.degraded = []
         
-        seq = self.makeSimulusSequence(run)
+        seq = self.makeStimulusSequence(run)
         blocks = self.blocks[run-1]
         
         i = 0
@@ -214,7 +214,7 @@ class AliceLocalizer:
                 i = i + 1
         
 
-    def makeSimulusSequence(self, run):
+    def makeStimulusSequence(self, run):
         seq = []
         isIntacts = []
         intact = list(range(1, 24))
