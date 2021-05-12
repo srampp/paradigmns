@@ -159,14 +159,25 @@ class AliceLocalizer:
         self.setupStimuli(self.language, run)
         
         msg = 'Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind.'
-
+        if self.language == "English":
+            msg = 'We will now play excerpts from the story "Alice in Wonderland". Please listen carefully and don\'t be surprised if some parts are incomprehensible or noisy.'
         self.waitForButton(msg, ['space'])
+
         startTriggers(self)
-        waitForFMRITrigger(self, 'Gleich geht es los...')
+
+        msg = 'Gleich geht es los...'
+        if self.language == "English":
+            msg = 'We\'ll start in a moment...'
+        waitForFMRITrigger(self, msg)
+
         self.fixation.autoDraw = True
         self.processBlocks(run-1) # zero-based index
         self.fixation.autoDraw = False
-        self.waitForButton('Ende der Aufgabe.', ['space'])
+
+        msg = 'Ende der Aufgabe'
+        if self.language == "English":
+            msg = 'You have completed the task.'
+        self.waitForButton(msg, ['space'])
         self.finish()
 
     def processBlocks(self, run):
