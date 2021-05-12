@@ -63,6 +63,7 @@ class AliceLocalizer:
         self.defaultKeyboard = keyboard.Keyboard()
         self.frameTolerance = 0.001 
         self.endExpNow = False
+        self.language = 'German'
         #self.serialPort = 'COM1'
         
     def setup(self):
@@ -73,7 +74,7 @@ class AliceLocalizer:
         os.chdir(self._thisDir)
         self.stimuliDir = os.path.join(self._thisDir, 'stimuli')
         expName = 'AliceLocalizer'
-        expInfo = {'participant': '', 'session': '001', 'Send triggers': 'yes'}
+        expInfo = {'participant': '', 'session': '001', 'Send triggers': 'yes', 'language': 'German'}
 
         dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
         if dlg.OK == False:
@@ -117,6 +118,8 @@ class AliceLocalizer:
             languageStyle='LTR',
             depth=0.0)
         self.fixation.autoDraw = False
+
+        self.language = expInfo['language']
         
         if expInfo['Send triggers'] == 'yes':
             setupTriggers(self, MODE_EXP)
@@ -139,7 +142,7 @@ class AliceLocalizer:
         #self.serial.close()
         closeTriggers(self)
             
-    def startExperiment(self, language = 'German', run = 1):
+    def startExperiment(self, run = 1):
         """
         Start the experiment with the specified parameters.
 
@@ -153,8 +156,11 @@ class AliceLocalizer:
             language of the stimuli to use (default: 'German')
         """
         self.setup()
-        self.setupStimuli(language, run)
-        self.waitForButton('Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind.', ['space'])
+        self.setupStimuli(self.language, run)
+        
+        msg = 'Ihnen werden nun Ausschnitte aus der Geschichte "Alice im Wunderland" vorgespielt. Bitte hören Sie sich diese möglichst aufmerksam an. Wundern Sie sich nicht, wenn manche Passagen völlig unverständlich und voller Rauschen sind.'
+
+        self.waitForButton(msg, ['space'])
         startTriggers(self)
         waitForFMRITrigger(self, 'Gleich geht es los...')
         self.fixation.autoDraw = True
@@ -196,7 +202,9 @@ class AliceLocalizer:
             Within this folder, stimuli are organized in subfolders according to the language, e.g. "German"
         """
         
-        directory =  os.path.join(self.stimuliDir, language)
+        languageMono = language + "Mono"
+
+        directory =  os.path.join(self.stimuliDir, languageMono)
         
         self.intact = []
         self.degraded = []
@@ -263,7 +271,7 @@ class AliceLocalizer:
             if value == last + 1:
                 return False
         
-        # Passages should not occur twice in the sequence, independen of intact/degraded
+        # Passages should not occur twice in the sequence, independent of intact/degraded
         for s in seq:
             if s == value:
                 return False
@@ -451,7 +459,7 @@ class AliceLocalizer:
         self.message.autoDraw = False
         
 alice = AliceLocalizer()
-alice.startExperiment(language, run)
+alice.startExperiment(run)
 
 # Test stimulus setup
 #alice.setup()
